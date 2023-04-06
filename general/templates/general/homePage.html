@@ -1,0 +1,59 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="first_section">
+            <div class="first_section__cont">
+                <img src="{% static 'Images/airmanas.png' %}" alt="">
+                <div class="first_section__text">
+                    <h3 class="aboutus">
+                        About us:
+                    </h3>
+                    <p class="first_text">
+                        Lorem ipsum dolor sit amet consectetur. Duis quam aliquam nunc cursus commodo nullam sed. Cras
+                        arcu sit fermentum mus elementum. Nunc eu lectus odio ut lectus auctor. Et quam ullamcorper
+                        sapien nibh posuere diam. Phasellus morbi amet ipsum eget gravida tempus. Magnis ut est odio non
+                        elit eu egestas. Arcu feugiat lectus orci augue justo libero. Tellus fames pretium augue porta
+                        arcu sagittis tincidunt sociis vel. Cras nisl tempus egestas in nulla.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    <section class="second_section">
+            <div class="first_box">
+                <h2>announcements</h2>
+                {% for announcement in announcements %}
+                <ul>
+                    <div class="first_box__flex">
+                        <li>
+                            {{ announcement.employee }}:
+                        </li>
+                        <p>{{ announcement.comments|truncatechars:15 }}</p>
+                        <h6>{{ announcement.request_date|date:"F j, g:i a" }}</h6>
+                    </div>
+
+                </ul>
+                {% endfor %}
+            </div>
+            <div class="second_box">
+                <div class="birthday">
+                    <h2>Birthdays at current month</h2>
+                    <img src="{% static 'Images/cake_icon.png' %}">
+                </div>
+                <div class="birthday_list">
+                    {% for employee in birthdays %}
+                        <div style="display: flex;">
+                            <p style="font-size: 40px;">{{ employee.birthday.day }} -&nbsp</p>
+                            <p>{{ employee.first_name }} {{ employee.last_name }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+{% endblock %}
+

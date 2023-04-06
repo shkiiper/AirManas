@@ -1,0 +1,60 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/addNewEmployer.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <section class="first_section">
+            <div class="title_wrapper">
+                <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'Images/arrow.png' %}" alt=""></a>
+                <p>employee details</p>
+            </div>
+        </section>
+
+    <section class="second_section">
+        <form action="{% url 'users:add-employee' %}" method="POST">
+            {% csrf_token %}
+            <div class="upper_cont">
+                <div class="cont">
+                    <p><label for="{{ form.first_name.if_for_label }}">First name:</label></p>
+                    {{ form.first_name }}
+                </div>
+                <div class="cont">
+                    <p><label for="{{ form.last_name.id_for_label }}">Last name:</label></p>
+                    {{ form.last_name }}
+                </div>
+                <div class="cont">
+                    <p><label for="{{ form.username.id_for_label }}">Username:</label></p>
+                    {{ form.username }}
+                </div>
+                   <div class="cont">
+                    <p><label for="form.email.id_for_label">Email:</label></p>
+                    {{ form.email }}
+                </div>
+                <div class="cont">
+                    <p><label for="{{ form.phone.id_for_label }}">Phone:</label></p>
+                    {{ form.phone }}
+                </div>
+                <div class="cont">
+                    <p><label for="form.password1.id_for_label">Password:</label></p>
+                    {{ form.password1 }}
+                </div>
+{#                <div class="cont">#}
+{#                    <p><label for="form.password2.id_for_label">Confirm password:</label></p>#}
+{#                    {{ form.password2 }}#}
+{#                </div>#}
+            </div>
+                <div class="data_birth">
+                    <p><label for="{{ form.birthday.id_for_label }}">Date of Birth:</label></p>
+                    {{ form.birthday }}
+                </div>
+
+                <div style=" max-width: 700px; margin: 35px auto; text-align: right;">
+                    <button type="submit" class="apply_button">Apply</button>
+                </div>
+        </form>
+        </section>
+{% endblock %}

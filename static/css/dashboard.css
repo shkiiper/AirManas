@@ -1,0 +1,355 @@
+@font-face {
+    font-family: 'malatestian';
+    src: url('../fonts/Malatestian.ttf');
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Bold.ttf');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Medium.ttf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Regular.ttf');
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto-Thin.ttf');
+    font-weight: 200;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto';
+}
+
+.container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* header styles */
+
+header {
+    background-color: #26ABE2;
+    border-radius: 0px 0px 25px 25px;
+    position: relative;
+}
+
+.header_menu {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    height: 188px;
+    flex: 0.8;
+}
+
+.header_container {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 50px;
+    padding-right: 25px;
+}
+
+.header_menu__link {
+    border: 5px solid white;
+    border-radius: 21px;
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header_profile__img {
+    margin: auto 0;
+    border-radius: 50%;
+}
+.Login {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+    text-decoration: underline;
+    color: white;
+    margin: auto 0;
+}
+.header_logo__img {
+    margin: auto 0;
+}
+
+.Home {
+    width: 180px;
+    height: 63px;
+
+}
+.active_link{
+    background-color: white;
+    color: #26ABE2;
+}
+.Dashboard {
+    width: 210px;
+    height: 63px;
+}
+
+.Take_vacation {
+    width: 226px;
+    height: 63px;
+}
+
+.Documents {
+    width: 210px;
+    height: 63px;
+}
+.dropdown{
+    width: 376px;
+    height: 414px;
+    position: absolute;
+    right: 65px;
+    top: 130px;
+    background-color: #2FC2FF;;
+    border-radius: 20px;
+    padding-left: 12px;
+    padding-top: 12px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.active{
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    z-index: 99;
+}
+.dropdown_head{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+.dropdown_head p{
+    font-weight: 500;
+font-size: 26px;
+line-height: 35px;
+color: white;
+margin-left: 18px;
+}
+.dropdown_list{
+font-weight: 500;
+font-size: 26px;
+line-height: 35px;
+display: flex;
+padding: 8px 0 8px 0;
+margin-top: 21px;
+}
+.dropdown_list a{
+    text-decoration: none;
+    color: white;
+
+}
+.dropdown_list img{
+    width: 37px;
+    height: 37px;
+    margin-right: 15px;
+}
+/* first section styles*/
+
+.first_section{
+    margin-top: 37px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content:space-around;
+    position: relative;
+}
+.search{
+    position: relative;
+}
+.search input{
+    width: 656px;
+    height: 49px;
+    background-color: #EDEDED;
+    border: none;
+    border-radius: 31px;
+    padding-left: 16px;
+    /* padding-top: 5px; */
+    font-weight: 400;
+font-size: 20px;
+/* line-height: 23px; */
+}
+.search input::placeholder{
+    opacity: 50%;
+    font-weight: 400;
+font-size: 20px;
+line-height: 23px;
+}
+
+.search_icon{
+    position:absolute;
+    right: 10px;
+    top: 11px;
+    width: 28px;
+    height: 28px
+}
+
+.select{
+    border: 3px solid #26ABE2;
+    width: 162px;
+    height: 43px;
+    border-radius: 67px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px 0 10px;
+    margin-right: 100px;
+    cursor: pointer;
+}
+.select p{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #26ABE2;
+}
+.arrow_sort{
+    text-align: right;
+    align-items: center;
+    width: 20px;
+    height: 18px;
+}
+.sort{
+    /* background: #26ABE2;
+border-radius: 21px;
+width: 162px;
+height: 138px;
+font-weight: 400;
+font-size: 20px;
+line-height: 23px;
+color: white;
+padding: 5px 0 0 15px; */
+visibility: hidden;
+opacity: 0;
+pointer-events: none;
+position: absolute;
+right: 180px;
+top: 40px;
+}
+.sort_select{
+    background: #26ABE2;
+    border-radius: 21px;
+    width: 162px;
+    height: 120px;
+    color: white;
+    /* padding: 5px 0 0 15px; */
+    font-size: 20px;
+    overflow-y:hidden;
+}
+.sort_select option{
+    padding: 5px 0 0 15px;
+
+}
+.sort_list{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 7px
+}
+.sort_list img{
+    margin-right: 14px;
+    width: 25px;
+}
+.sort_active{
+visibility: visible;
+opacity: 1;
+pointer-events: all;
+}
+/* second section styles */
+
+.second_section{
+    margin-top: 20px;
+}
+.tabel{
+    width: 1200px;
+    border: 1px solid #828282;
+    margin: 0 auto;
+    border-radius: 10px;
+    /* border-collapse:collapse; */
+}
+
+.cell{
+    display: flex;
+    border-bottom: 1px solid #828282;
+    justify-content: space-between;
+    color: black;
+}
+.cont
+{
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+.cell h4{
+    flex-basis: 100%;
+    border-right: 0.5px solid #828282;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+    padding-left: 15px;
+    background-color: #26ABE2;
+    color: white;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    width: 100px;
+}
+.cell p{
+    flex-basis: 100%;
+    border-right: 0.5px solid #828282;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    width: 100px;
+}
+
+/* third section styles */
+
+.third_section{
+    margin-top: 34px;
+}
+.third_section div{
+    text-align: right;
+    margin-right: 200px;
+}
+.third_section button{
+    width: 237px;
+    height: 55px;
+    background: #26ABE2;
+    border-radius: 65px;
+    border: none;
+    font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+color: white;
+}

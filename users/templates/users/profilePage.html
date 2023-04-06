@@ -1,0 +1,59 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profilePage.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="first_section">
+            <div class="title_wrapper">
+                <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'Images/arrow.png' %}" alt=""></a>
+                <p>employee profile page</p>
+            </div>
+        </section>
+
+    <section class="second_section">
+        <div class="profile_cont">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div style="position: relative; display: inline-block;">
+                <label for="{{ form.user.image.id_for_label }}">
+                    <img class="profile_photo" src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'Images/defaultProfileIcon.jpg' %} {% endif %}">
+                </label>
+                {{ form.image }}
+            </div>
+
+            <button type="submit">Upload</button>
+        </form>
+            <div class="profile_info">
+                <p><strong>ID </strong> : {{ employee.id }}</p>
+                <p><strong>Full name </strong> : {{ employee.first_name }} {{employee.last_name }} </p>
+                <p><strong>Profession </strong> : {{ employee.doljnost }} </p>
+                <p><strong>Email </strong> :  {{ employee.email }}</p>
+                <p><strong>Phone </strong> : {{ employee.phone }} </p>
+                <p><strong>Birthday </strong> : {{ employee.birthday }}</p>
+            </div>
+        </div>
+            <div class="available">
+                <p>Vacation days available:  </p>
+                <div class="color_blue">{{ employee.available_vacation }}</div>
+                <a href="{% url 'vacation:history' %}">Vacations history</a>
+            </div>
+            <div class="available">
+                <p>Days to trainning:  </p>
+                <div class="color_darkblue"> 37 </div>
+            </div>
+
+                            <!-- For Admin profile -->
+             <div style="text-align: right; margin: 0 81px 0 0;">
+                <button style="color: white" class="buttons"><a style="color: white" href="{% url 'vacation:take_vacation' %}">Take vacation</a></button>
+                 {% if user.is_superuser or user.is_staff %}
+                <button style="padding: 15px" class="buttons"><a style="color: white" href="{% url 'vacation:calendar' %}">Vacation calendar</a></button>
+                <button style="padding: 15px" style="color: white" class="buttons"><a style="color: white" href="{% url 'vacation:vacation_requests' %}">Vacation requests</a></button>
+                 {% endif %}
+            </div>
+
+        </section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/changeEmployer.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="first_section">
+            <div class="title_wrapper">
+                <a href="{{ request.META.HTTP_REFERER }}"><img src="{% static 'Images/arrow.png' %}" alt=""></a>
+                <p>update employee</p>
+            </div>
+        </section>
+
+    <section class="second_section">
+        <div class="upper_cont">
+            <div class="cont">
+                <p>Employee ID:</p>
+                <input type="text">
+            </div>
+            <div class="cont">
+                <p>Full Name:</p>
+                <input type="text">
+            </div>
+            <div class="cont">
+                <p>Email :</p>
+                <input type="text">
+            </div>
+            <div class="cont">
+                <p>Phone:</p>
+                <input type="text">
+            </div>
+        </div>
+            <div class="data_birth">
+                <p >Date Of Birth:</p>
+                <input type="date">
+            </div>
+
+            <div style="margin:35px 0 0 230px;">
+                <button class="delete_button">Delete employee</button>
+                <button class="apply_button">Apply</button>
+            </div>
+        </section>
+{% endblock %}

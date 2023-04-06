@@ -1,0 +1,79 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/vacationRequests.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vacationInfo.css' %}">
+{% endblock %}
+
+{% block addition %}
+
+{% endblock %}
+
+{% block content %}
+    <section class="first_section">
+            <div class="title_wrapper">
+                <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'Images/arrow.png' %}" alt=""></a>
+                <p>vacation requests</p>
+            </div>
+    </section>
+
+    <section class="second_section">
+        {% for i in vacation_requests %}
+            {% if not i.accepted %}
+                <div class="wrapper_2">
+                    <div class="line" style="cursor: pointer">
+{#                        <div class="status"></div>#}
+                        <p class="name">{{ i.employee.first_name }} {{ i.employee.last_name }}</p>
+                        <div class="text">{{ i.comments }}</div>
+                        <p class="time">{{ i.requests_date|date:"F j, g:i a" }}</p>
+                    </div>
+                    <div class="container_info">
+                        <div class="wrapper">
+                        <div class="header">
+                            <p>vacation info</p>
+                            <img src="{% static 'Images/cross.png' %}" alt="" class="close">
+                        </div>
+                        <div class="info">
+                            <div class = "text_line"><p><strong>Employee : </strong> {{ i.employee.first_name }} {{ i.employee.last_name }}</p></div>
+                            <div class = "text_line"><p><strong>Profession : </strong> {{ i.employee.doljnost }}</p></div>
+                            <div class = "text_line"><p><strong>Period : </strong> {{ i.requests_date|date:"F j, g:i a" }}</p></div>
+
+                            <div class = "text_line"> <p><strong>Status : </strong> Accepted<span class="green"></span></p></div>
+{#                            <div> <p>Accepted: </p><strong>No</strong></div>#}
+
+                            <div class = "text_line"><p> <strong>Reason : </strong> {{ i.comments }}</p></div>
+                        </div>
+{#                            <div class="button_close">#}
+{#                                <button class="btn_decline">Decline</button>#}
+{#                                <button class="btn_accept">Accept</button>#}
+{#                                </div>#}
+{#                            </div>#}
+                        </div>
+                </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+
+    <section class="third_section">
+{#            <p class="accepted_style">accepted:</p>#}
+        {% for i in vacation_requests %}
+            {% if i.accepted %}
+            <div class="line color_line" style="cursor: pointer">
+                 <div class="info">
+                            <div><p>Employee: </p><strong>{{ i.employee.first_name }} {{ i.employee.last_name }}</strong></div>
+                            <div><p>Profession: </p><strong>{{ i.employee.doljnost }}</strong></div>
+                            <div><p>Period: </p><strong>{{ i.requests_date|date:"F j, g:i a" }}</strong></div>
+
+                            <div> <p>Status: </p><strong>Accepted</strong><span class="orange"></span></div>
+{#                            <div> <p>Accepted: </p><strong>No</strong></div>#}
+
+                            <div><p>Reason: </p><textarea name="" id="" cols="30" rows="10"></textarea></div>
+                        </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+
+{% endblock %}

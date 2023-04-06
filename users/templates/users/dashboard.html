@@ -1,0 +1,113 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <section class="first_section">
+            <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'Images/arrow.png' %}" alt=""></a>
+
+                <label class="search">
+                    <input type="text" id="search-input" name="search" placeholder="Search..." oninput="filterEmployees()">
+                    <img src="{% static 'Images/search.png' %}" alt="" class="search_icon">
+                </label>
+
+
+            <div class="select">
+                <p id="status-filter">
+                    Sort by...
+                </p>
+                <img src="{% static 'Images/double_arrow.png' %}" class="arrow_sort">
+            </div>
+
+        <div class="sort" >
+            <form>
+                <select size="4" class="sort_select">
+                    <option value="A-Z">A-Z</option>
+                    <option value="Z-A">Z-A</option>
+                    <option value="Vacation">Vacations</option>
+                    <option value="Vacation">Vacations</option>
+                </select>
+            </form>
+        </div>
+        </section>
+    <section class="second_section">
+        <div class="tabel" id="myTable">
+
+            <div class="cell general" id="general_cell">
+                <h4 class="cont">Employee ID</h4>
+                <h4 class="cont">Name</h4>
+                <h4 class="cont">Email</h4>
+                <h4 class="cont">Vacation days</h4>
+                <h4 class="cont">Phone</h4>
+                <h4 class="cont">Birthday</h4>
+                <h4 class="cont">Status</h4>
+            </div>
+
+            <div id="search-results" class="search-results">
+                {% for employee in employee %}
+                <a class="cell employee-cell" id="cell{{ employee.id }}" href="{% url "users:profile" pk=employee.id %}">
+                    <p class="cont">{{ employee.id }}</p>
+                    <p class="cont">{{ employee.first_name }} {{ employee.last_name }}</p>
+                    <p class="cont">{{ employee.email }}</p>
+                    <p class="cont">{{ employee.available_vacation }} days</p>
+                    <p class="cont">{{ employee.phone }}</p>
+                    <p class="cont">{{ employee.birthday }}</p>
+                    {% if employee.status %}
+                    <p>On Vacation</p>
+                    {% else %}
+                    <p>Working</p>
+                    {% endif %}
+                </a>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+    <span class="text-danger" id="no_data"></span>
+    <section class="third_section">
+        <div>
+            <button style="width: 287px; margin-left: 33px;"><a style="color: white" href={% url 'users:add-employee' %}>Add new employee</a></button>
+        </div>
+    </section>
+
+    <script>
+        function filterEmployees() {
+          var input = document.getElementById("search-input");
+          var filter = input.value.toUpperCase();
+          var cells = document.getElementsByClassName("employee-cell");
+
+          var resultsFound = false;
+          for (var i = 0; i < cells.length; i++) {
+            var cell = cells[i];
+            var id = cell.querySelector("p:nth-child(1)");
+            var name = cell.querySelector("p:nth-child(2)");
+            var email = cell.querySelector("p:nth-child(3)");
+            var vacationDays = cell.querySelector("p:nth-child(4)");
+            var status = cell.querySelector("p:nth-child(5)");
+            var values = [id, name, email, vacationDays, status].map(function(field) {
+              return field.textContent || field.innerText;
+            }).join(" ");
+
+            if (values.toUpperCase().indexOf(filter) > -1) {
+              cell.style.display = "";
+              resultsFound = true;
+            } else {
+              cell.style.display = "none";
+            }
+          }
+
+          // Show a message if no results are found
+          var message = document.getElementById("no_data");
+          if (resultsFound) {
+            message.style.display = "none";
+          } else {
+            message.style.display = "";
+          }
+        }
+    </script>
+{% endblock %}

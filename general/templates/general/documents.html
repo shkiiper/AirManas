@@ -1,0 +1,32 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/documents.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <section class="first_section">
+            <div class="title_wrapper">
+                <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'Images/arrow.png' %}" alt=""></a>
+                <p>documents</p>
+            </div>
+    </section>
+
+    <section class="second_section">
+           <div class="box">
+            <p>#1 Type of documents:</p>
+           </div>
+           <div class="box">
+            <p>#2 Type of documents:</p>
+           </div>
+           <div class="box">
+            <p>#3 Type of documents:</p>
+           </div>
+           <div class="box">
+            <p>#4 Type of documents:</p>
+           </div>
+        </section>
+{% endblock %}

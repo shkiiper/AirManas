@@ -1,0 +1,71 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block css %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/takeVacation.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="first_section">
+            <div class="title_wrapper">
+                <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'Images/arrow.png' %}" alt=""></a>
+                <p>take vacation</p>
+            </div>
+            <div class="note">
+                <p>Vacation days available: {{ user.available_vacation }}</p>
+                <p>Selected days: {{ vacations.count_of_vacations }}</p>
+{#                <p>Selected days: <span id="selected-days">0</span></p>#}
+            </div>
+            <form action="{% url 'vacation:take_vacation' %}" method="POST">
+                {% csrf_token %}
+                    <div class="data">
+                    <div class="data_from">
+                        <p>From:</p>{{ form.date_of_begin }}
+                    </div>
+                    <div class="data_to">
+                       <p>To:</p> {{ form.date_of_end }}
+                    </div>
+                </div>
+
+
+            <section class="second_section">
+                {{ form.comments }}
+             </section>
+                <div>
+                    <p>Send to everyone:</p>
+                    {{ form.send_to_all }}
+                </div>
+                <div>
+                    <button class="cancel" style="color: white" ><a style="color: white" href={{request.META.HTTP_REFERER}}>Cancel</a></button>
+                    <button type="submit" class="apply">Apply</button>
+                </div>
+            </form>
+        </section>
+    <script>
+     var startDatePicker = document.getElementById("start-date");
+    var endDatePicker = document.getElementById("end-date");
+
+    // Attach change event listeners to both date pickers
+    startDatePicker.addEventListener("change", updateSelectedDays);
+    endDatePicker.addEventListener("change", updateSelectedDays);
+
+// Function to update the selected days count
+    function updateSelectedDays() {
+      // Get the start and end dates from the date pickers
+      var startDate = new Date(startDatePicker.value);
+      var endDate = new Date(endDatePicker.value);
+
+      // Calculate the difference in milliseconds
+      var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+
+      // Convert to days by dividing by the number of milliseconds in a day
+      var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+      count_of_vacations=diffDays;
+
+      // Display the result to the user
+      document.getElementById("selected-days").innerHTML = diffDays;
+    }
+    </script>
+{% endblock %}

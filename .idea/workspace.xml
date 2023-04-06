@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="315db47d-9336-40a6-9cda-057d78f65236" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/AirManas/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AirManas/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/general/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/templates/general/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/general/templates/general/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/templates/general/info.js" beforeDir="false" afterPath="$PROJECT_DIR$/general/templates/general/info.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/templates/general/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/general/templates/general/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/profilePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/profilePage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/vacationInfo.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/vacationInfo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/vacationRequests.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/vacationRequests.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/profilePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profilePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/info.js" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/info.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/takeVacation.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/takeVacation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationHistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationInfo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationRequests.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationRequests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2LpS0ZvtIGXoVsk3twhpdvq01q9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/max/Desktop/AirManas&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\FIP\AirManas\general\templates\general" />
+      <recent name="C:\Users\User\Documents\FIP\AirManas\vacations\templates\vacations" />
+      <recent name="C:\Users\User\Documents\FIP\AirManas\static\Images" />
+      <recent name="C:\Users\User\Documents\FIP\AirManas\users\templates\users" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Documents\FIP\AirManas\general\templates\general" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django Server.AirManas">
+    <configuration name="Test: " type="DjangoTestsConfigurationType" temporary="true">
+      <module name="AirManas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AirManas" type="Python.DjangoServer" factoryName="Django server" singleton="true">
+      <module name="AirManas" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="AirManas.settings" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\User\Documents\FIP\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="http://127.0.0.1:8000/" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Django tests.Test: " />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="315db47d-9336-40a6-9cda-057d78f65236" name="Changes" comment="" />
+      <created>1676566309774</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676566309774</updated>
+      <workItem from="1676566322249" duration="10289000" />
+      <workItem from="1676577489741" duration="880000" />
+      <workItem from="1676578437756" duration="162000" />
+      <workItem from="1676578740682" duration="427000" />
+      <workItem from="1676633524337" duration="954000" />
+      <workItem from="1676636926705" duration="3379000" />
+      <workItem from="1676641539652" duration="2519000" />
+      <workItem from="1676661934176" duration="581000" />
+      <workItem from="1676662576612" duration="1317000" />
+      <workItem from="1676738308646" duration="10581000" />
+      <workItem from="1676813726066" duration="4887000" />
+      <workItem from="1676827244225" duration="9868000" />
+      <workItem from="1676882657274" duration="634000" />
+      <workItem from="1676886399974" duration="533000" />
+      <workItem from="1676895047638" duration="7563000" />
+      <workItem from="1676904709069" duration="291000" />
+      <workItem from="1676905009779" duration="51000" />
+      <workItem from="1676972668291" duration="8650000" />
+      <workItem from="1676983066419" duration="3860000" />
+      <workItem from="1676988670523" duration="1389000" />
+      <workItem from="1677241620565" duration="3451000" />
+      <workItem from="1677306763673" duration="4461000" />
+      <workItem from="1677325169780" duration="202000" />
+      <workItem from="1677331027437" duration="12459000" />
+      <workItem from="1677347936090" duration="3548000" />
+      <workItem from="1677351827704" duration="22000" />
+      <workItem from="1677426672740" duration="547000" />
+      <workItem from="1677428472262" duration="89000" />
+      <workItem from="1677428626445" duration="55000" />
+      <workItem from="1677428692529" duration="7576000" />
+      <workItem from="1677437062391" duration="3783000" />
+      <workItem from="1677440905647" duration="73000" />
+      <workItem from="1677526381274" duration="2199000" />
+      <workItem from="1677571943352" duration="811000" />
+      <workItem from="1677580907869" duration="4535000" />
+      <workItem from="1677600169529" duration="2578000" />
+      <workItem from="1677680401025" duration="256000" />
+      <workItem from="1677698420937" duration="8000" />
+      <workItem from="1677738824793" duration="346000" />
+      <workItem from="1677739942198" duration="1954000" />
+      <workItem from="1677762902831" duration="200000" />
+      <workItem from="1677766164335" duration="3685000" />
+      <workItem from="1677770017922" duration="1007000" />
+      <workItem from="1677771177279" duration="1274000" />
+      <workItem from="1677772520022" duration="11424000" />
+      <workItem from="1677821109177" duration="60000" />
+      <workItem from="1677821276047" duration="24000" />
+      <workItem from="1677857165373" duration="8196000" />
+      <workItem from="1677921140960" duration="998000" />
+      <workItem from="1677951866826" duration="988000" />
+      <workItem from="1678034470559" duration="4135000" />
+      <workItem from="1678105221311" duration="13471000" />
+      <workItem from="1678198628695" duration="595000" />
+      <workItem from="1678204547164" duration="4033000" />
+      <workItem from="1678354249185" duration="92000" />
+      <workItem from="1678452524285" duration="594000" />
+      <workItem from="1678462344881" duration="1859000" />
+      <workItem from="1678517588615" duration="3418000" />
+      <workItem from="1678526119073" duration="1445000" />
+      <workItem from="1678633019535" duration="145000" />
+      <workItem from="1678725163636" duration="5784000" />
+      <workItem from="1679071194166" duration="4817000" />
+      <workItem from="1679157261403" duration="1674000" />
+      <workItem from="1679308373299" duration="871000" />
+      <workItem from="1679309259695" duration="3454000" />
+      <workItem from="1679313463927" duration="2664000" />
+      <workItem from="1679494602051" duration="618000" />
+      <workItem from="1679495228445" duration="9791000" />
+      <workItem from="1679539108621" duration="4766000" />
+      <workItem from="1679554406133" duration="3092000" />
+      <workItem from="1679559496388" duration="3509000" />
+      <workItem from="1679840092942" duration="837000" />
+      <workItem from="1679933440485" duration="5796000" />
+      <workItem from="1680032568077" duration="191000" />
+      <workItem from="1680089830019" duration="5759000" />
+      <workItem from="1680680673698" duration="17234000" />
+      <workItem from="1680714995371" duration="189000" />
+      <workItem from="1680715192825" duration="13000" />
+      <workItem from="1680715640587" duration="33359000" />
+      <workItem from="1680798521301" duration="3885000" />
+      <workItem from="1680802699436" duration="7579000" />
+      <workItem from="1680810972898" duration="178000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/AirManas$Test__.coverage" NAME="Test:  Coverage Results" MODIFIED="1680802559688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+</project>

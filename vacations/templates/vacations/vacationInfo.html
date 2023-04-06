@@ -1,0 +1,38 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/vacationInfo.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="info">
+
+
+
+            <div><p>Employee: </p><strong>{{ i.employee.first_name }} {{ i.employee.last_name }}</strong></div>
+        <div><p>Profession: </p><strong>{{ i.employee.doljnost }}</strong></div>
+        <div><p>Period: </p><strong>{{ i.requests_date|date:"F j, g:i a" }}</strong></div>
+
+                                <!-- info1 -->
+            <!-- <div> <p>Status: </p><strong>In progress</strong><span class="green"></span></div> -->
+
+                                <!-- Info2 -->
+            <div> <p>Status: </p><strong>Planned</strong><span class="orange"></span></div>
+            <div> <p>Accepted: </p><strong>No</strong></div>
+
+                                <!-- Personal -->
+            <!-- <div> <p>Accepted: </p><strong>Yes</strong></div> -->
+
+
+            <div><p>Reason: </p><textarea name="" id="" cols="30" rows="10"></textarea></div>
+        </div>
+    <div class="button_close">
+                                <!-- Info2 -->
+            <button class="btn_decline">Decline</button>
+            <button class="btn_accept">Accept</button>
+
+                                <!-- info1 и personal -->
+            <!-- <button class="btn_close">Close</button> -->
+        </div>
+{% endblock %}
