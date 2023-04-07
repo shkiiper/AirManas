@@ -21,6 +21,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from django.http import JsonResponse, HttpResponseRedirect
 from rest_framework.status import HTTP_201_CREATED
+from django.db.models.functions import Lower
 
 from django.views.generic.base import TemplateView
 
@@ -55,6 +56,51 @@ class UserProfileView(TitleMixin, UpdateView):
         return reverse_lazy('users:profile', args=(self.object.id,))
 
 
+# class DashboardView(TitleMixin, ListView):
+#     model = Employee
+#     template_name = 'users/dashboard.html'
+#     context_object_name = 'employees'
+#     title = 'Dashboard'
+#
+#     def get_queryset(self):
+#         queryset = super().get_queryset()
+#         employee_id = self.kwargs.get('employee_id')
+#         return queryset.filter(employee_id=employee_id) if employee_id else queryset
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['employee'] = Employee.objects.all()
+#         return context
+#
+#     def get(self, request, *args, **kwargs):
+#         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
+#             query = request.GET.get('q', '')
+#             status_filter = request.GET.get('status', '')
+#             object_list = self.get_queryset()
+#             if query:
+#                 object_list = object_list.filter(
+#                     Q(id__icontains=query) |
+#                     Q(name__icontains=query) |
+#                     Q(email__icontains=query) |
+#                     Q(available_vacation__icontains=query)
+#                 )
+#             if status_filter:
+#                 object_list = object_list.filter(status=status_filter)
+#             data = []
+#             for obj in object_list:
+#                 item = {
+#                     'id': obj.id,
+#                     'name': obj.name,
+#                     'email': obj.email,
+#                     'available_vacation': obj.available_vacation,
+#                     'status': obj.status
+#                 }
+#                 data.append(item)
+#             return JsonResponse({'data': data})
+#         return super().get(request, *args, **kwargs)
+from django.db.models.functions import Lower
+
+
 class DashboardView(TitleMixin, ListView):
     model = Employee
     template_name = 'users/dashboard.html'
@@ -64,7 +110,19 @@ class DashboardView(TitleMixin, ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         employee_id = self.kwargs.get('employee_id')
-        return queryset.filter(employee_id=employee_id) if employee_id else queryset
+        queryset = queryset.filter(employee_id=employee_id) if employee_id else queryset
+
+        # Handle sorting parameter
+        sort_by = self.request.GET.get('sort_by')
+        if sort_by:
+            if sort_by == 'name':
+                queryset = queryset.annotate(name_lower=Lower('name')).order_by('name_lower')
+            elif sort_by == 'available_vacation':
+                queryset = queryset.order_by('-available_vacation')
+            elif sort_by == 'status':
+                queryset = queryset.order_by('status')
+
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

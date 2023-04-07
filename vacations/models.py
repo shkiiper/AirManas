@@ -10,7 +10,11 @@ class Vacations(models.Model):
     count_of_vacations = models.IntegerField(default=0)
     send_to_all = models.BooleanField(default=False)
     accepted = models.BooleanField(default=False)
-    status = models.BooleanField(default=False)
+    STATUS_CHOICES = (
+        ('planed', 'Planed'),
+        ('now', 'Now')
+    )
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='planed')
     employee = models.ForeignKey(Employee, on_delete=models.PROTECT, null=True)
 
     def __str__(self) -> str:

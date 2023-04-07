@@ -27,10 +27,8 @@
         <div class="sort" >
             <form>
                 <select size="4" class="sort_select">
-                    <option value="A-Z">A-Z</option>
-                    <option value="Z-A">Z-A</option>
-                    <option value="Vacation">Vacations</option>
-                    <option value="Vacation">Vacations</option>
+                    <option value="A-Z">Name</option>
+                    <option value="Z-A">Status</option>
                 </select>
             </form>
         </div>
@@ -64,11 +62,6 @@
                     <p class="cont">{{ employee.phone }}</p>
 {#                    <p class="cont">{{ employee.birthday }}</p>#}
                     <p class="cont">{{ employee.status }}</p>
-{#                    {% if employee.status %}#}
-{#                    <p>On Vacation</p>#}
-{#                    {% else %}#}
-{#                    <p>Working</p>#}
-{#                    {% endif %}#}
                 </a>
                 {% endfor %}
             </div>

@@ -20,7 +20,7 @@
             {% csrf_token %}
             <div style="position: relative; display: inline-block;">
                 <label for="{{ form.user.image.id_for_label }}">
-                    <img class="profile_photo" src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'Images/defaultProfileIcon.jpg' %} {% endif %}">
+                    <img class="profile_photo" src="{% if employee.image %} {{ employee.image.url }} {% else %} {% static 'Images/defaultProfileIcon.jpg' %} {% endif %}">
                 </label>
                 {{ form.image }}
             </div>
