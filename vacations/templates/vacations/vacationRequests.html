@@ -25,6 +25,7 @@
                     <div class="line" style="cursor: pointer">
 {#                        <div class="status"></div>#}
                         <p class="name">{{ i.employee.first_name }} {{ i.employee.last_name }}</p>
+                        <div class="text">{{ i.status }}</div>
                         <div class="text">{{ i.comments }}</div>
                         <p class="time">{{ i.requests_date|date:"F j, g:i a" }}</p>
                     </div>

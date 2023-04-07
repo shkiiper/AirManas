@@ -305,22 +305,31 @@
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/vacationHistory.css' %}">
 {% endblock %}
-
 {% block content %}
-    <h1>{{ title }}</h1>
-    <div class="vacation-periods">
-     {% csrf_token %}
-        {% for vacation in past_vacations %}
-            <div class="vacation-period">
-                <p>Employee: {{ vacation.employee.username }}</p>
-                <p>From: {{ vacation.date_of_begin }}</p>
-                <p>To: {{ vacation.date_of_end }}</p><br>
-{#                <p>Days: </p>#}
-            </div>
-        {% empty %}
-            <p>No past vacations found.</p>
-        {% endfor %}
-    </div>
+  <h1>{{ title }}</h1>
+  {% if past_vacations %}
+    <ul>
+      {% for vacation in past_vacations %}
+        <li>
+          <h2>{{ vacation.employee.full_name }}</h2>
+          <p>Comments: {{ vacation.comments }}</p>
+          <p>Request date: {{ vacation.requests_date }}</p>
+          <p>Date of begin: {{ vacation.date_of_begin }}</p>
+          <p>Date of end: {{ vacation.date_of_end }}</p>
+          <p>Count of vacations: {{ vacation.count_of_vacations }}</p>
+          <p>Status: {% if vacation.accepted %}Accepted{% else %}Pending{% endif %}</p>
+          <p>Dates between:</p>
+          <ul>
+            {% for date in vacation.dates_between %}
+              <li>{{ date }}</li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No past vacations found.</p>
+  {% endif %}
 {% endblock %}
 
 

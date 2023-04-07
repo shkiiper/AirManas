@@ -42,15 +42,22 @@
                             </span>
                         </div>
                     {% if user.is_superuser or user.is_staff %}
-                        <div class="dropdown_list">
-                            <img src="{% static 'Images/calendar.png' %}" alt="">
-                            <a href="{% url 'vacation:calendar' %}">Vacations calendar</a>
-                        </div>
+{#                        <div class="dropdown_list">#}
+{#                            <img src="{% static 'Images/calendar.png' %}" alt="">#}
+{#                            <a href="{% url 'vacation:calendar' %}">Vacations calendar</a>#}
+{#                        </div>#}
                         <div class="dropdown_list">
                             <img src="{% static 'Images/request.png' %}" alt="">
                             <a href="{% url 'admin:index' %}">Admin-panel</a>
                         </div>
-                    {% endif %}    
+                    {% endif %}
+                    {% if user.is_authenticated %}
+    <div class="dropdown_list">
+        <img src="{% static 'Images/calendar.png' %}" alt="">
+        <a href="{% url 'vacation:calendar' %}">Vacations calendar</a>
+    </div>
+{% endif %}
+
                         <div class="dropdown_list">
                             <img src="{% static 'Images/question.png' %}" alt="">
                             <a href="{% url 'instructions' %}">How to use?</a>

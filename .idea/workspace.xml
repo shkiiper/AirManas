@@ -7,11 +7,10 @@
     <list default="true" id="315db47d-9336-40a6-9cda-057d78f65236" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/users/profilePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profilePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/templates/general/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/general/templates/general/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vacations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationCalendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationCalendar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationHistory.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationRequests.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationRequests.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vacations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/views.py" afterDir="false" />
     </list>
@@ -211,7 +210,7 @@
       <workItem from="1680798521301" duration="3885000" />
       <workItem from="1680802699436" duration="7579000" />
       <workItem from="1680810972898" duration="178000" />
-      <workItem from="1680836653758" duration="18826000" />
+      <workItem from="1680836653758" duration="21917000" />
     </task>
     <servers />
   </component>

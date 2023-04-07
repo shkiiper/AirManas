@@ -12,6 +12,7 @@ class Vacations(models.Model):
     accepted = models.BooleanField(default=False)
     STATUS_CHOICES = (
         ('planed', 'Planed'),
+        ('past', 'Past'),
         ('now', 'Now')
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='planed')
