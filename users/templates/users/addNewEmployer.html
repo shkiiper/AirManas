@@ -15,7 +15,7 @@
         </section>
 
     <section class="second_section">
-        <form action="{% url 'users:add-employee' %}" method="POST">
+        <form action="{% url 'users:add_employee' %}" method="POST">
             {% csrf_token %}
             <div class="upper_cont">
                 <div class="cont">
@@ -30,7 +30,15 @@
                     <p><label for="{{ form.username.id_for_label }}">Username:</label></p>
                     {{ form.username }}
                 </div>
-                   <div class="cont">
+                <div class="cont">
+                    <p><label for="form.password1.id_for_label">Password:</label></p>
+                    {{ form.password1 }}
+                </div>
+                <div class="cont">
+                    <p><label for="form.password2.id_for_label">Confirm password:</label></p>
+                    {{ form.password2 }}
+                </div>
+                <div class="cont">
                     <p><label for="form.email.id_for_label">Email:</label></p>
                     {{ form.email }}
                 </div>
@@ -38,14 +46,6 @@
                     <p><label for="{{ form.phone.id_for_label }}">Phone:</label></p>
                     {{ form.phone }}
                 </div>
-                <div class="cont">
-                    <p><label for="form.password1.id_for_label">Password:</label></p>
-                    {{ form.password1 }}
-                </div>
-{#                <div class="cont">#}
-{#                    <p><label for="form.password2.id_for_label">Confirm password:</label></p>#}
-{#                    {{ form.password2 }}#}
-{#                </div>#}
             </div>
                 <div class="data_birth">
                     <p><label for="{{ form.birthday.id_for_label }}">Date of Birth:</label></p>

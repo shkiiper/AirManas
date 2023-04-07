@@ -181,7 +181,7 @@ margin-top: 21px;
     position: relative;
 }
 .search input{
-    width: 656px;
+    width: 400px;
     height: 49px;
     background-color: #EDEDED;
     border: none;
@@ -246,7 +246,7 @@ visibility: hidden;
 opacity: 0;
 pointer-events: none;
 position: absolute;
-right: 180px;
+right: 370px;
 top: 40px;
 }
 .sort_select{
@@ -283,6 +283,7 @@ pointer-events: all;
 
 .second_section{
     margin-top: 20px;
+    padding-bottom: 50px;
 }
 .tabel{
     width: 1200px;
@@ -304,21 +305,24 @@ pointer-events: all;
     display: flex;
     justify-content: center;
 }
+.cont_id
+{
+    display: flex;
+    justify-content: center;
+    width: 50px;
+}
 .cell h4{
     flex-basis: 100%;
     border-right: 0.5px solid #828282;
     height: 50px;
     align-items: center;
     display: flex;
-    justify-content: left;
-    text-align: left;
-    padding-left: 15px;
+    justify-content: center;
     background-color: #26ABE2;
     color: white;
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
-    width: 100px;
 }
 .cell p{
     flex-basis: 100%;
@@ -330,7 +334,6 @@ pointer-events: all;
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
-    width: 100px;
 }
 
 /* third section styles */
@@ -340,7 +343,7 @@ pointer-events: all;
 }
 .third_section div{
     text-align: right;
-    margin-right: 200px;
+    margin-right: 50px;
 }
 .third_section button{
     width: 237px;

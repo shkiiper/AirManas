@@ -38,7 +38,13 @@
 }
 
 /* header styles */
-
+.buttom_takeVacation
+{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
 header {
     background-color: #26ABE2;
     border-radius: 0px 0px 25px 25px;

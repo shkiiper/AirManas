@@ -34,46 +34,48 @@
                 </select>
             </form>
         </div>
+     <span class="text-danger" id="no_data"></span>
+    <section class="third_section">
+        <div>
+            <button style="width: 250px;"><a style="color: white" href={% url 'users:add_employee' %}>Add new employee</a></button>
+        </div>
+    </section>
         </section>
     <section class="second_section">
         <div class="tabel" id="myTable">
 
             <div class="cell general" id="general_cell">
-                <h4 class="cont">Employee ID</h4>
+                <h4 class="cont_id">Employee ID</h4>
                 <h4 class="cont">Name</h4>
                 <h4 class="cont">Email</h4>
                 <h4 class="cont">Vacation days</h4>
                 <h4 class="cont">Phone</h4>
-                <h4 class="cont">Birthday</h4>
+{#                <h4 class="cont">Birthday</h4>#}
                 <h4 class="cont">Status</h4>
             </div>
 
             <div id="search-results" class="search-results">
                 {% for employee in employee %}
                 <a class="cell employee-cell" id="cell{{ employee.id }}" href="{% url "users:profile" pk=employee.id %}">
-                    <p class="cont">{{ employee.id }}</p>
+                    <p class="cont_id">{{ employee.id }}</p>
                     <p class="cont">{{ employee.first_name }} {{ employee.last_name }}</p>
                     <p class="cont">{{ employee.email }}</p>
                     <p class="cont">{{ employee.available_vacation }} days</p>
                     <p class="cont">{{ employee.phone }}</p>
-                    <p class="cont">{{ employee.birthday }}</p>
-                    {% if employee.status %}
-                    <p>On Vacation</p>
-                    {% else %}
-                    <p>Working</p>
-                    {% endif %}
+{#                    <p class="cont">{{ employee.birthday }}</p>#}
+                    <p class="cont">{{ employee.status }}</p>
+{#                    {% if employee.status %}#}
+{#                    <p>On Vacation</p>#}
+{#                    {% else %}#}
+{#                    <p>Working</p>#}
+{#                    {% endif %}#}
                 </a>
                 {% endfor %}
             </div>
 
         </div>
     </section>
-    <span class="text-danger" id="no_data"></span>
-    <section class="third_section">
-        <div>
-            <button style="width: 287px; margin-left: 33px;"><a style="color: white" href={% url 'users:add-employee' %}>Add new employee</a></button>
-        </div>
-    </section>
+
 
     <script>
         function filterEmployees() {

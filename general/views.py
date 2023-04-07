@@ -52,8 +52,6 @@ class DocumentsView(TitleMixin, TemplateView):
     title = 'Documents'
 
 
-
-
 # class IndexView(TitleMixin, ListView):
 #     model = Employee
 #     template_name = 'general/homePage.html'

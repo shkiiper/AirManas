@@ -4,9 +4,12 @@ from django.contrib.auth.views import LoginView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.utils import timezone
+
+from general.models import Trainings
 from users.models import Employee
 from common.views import TitleMixin
-from users.forms import UserLoginForm, UserProfileForm
+from users.forms import UserLoginForm, UserProfileForm, AddNewEmployeeForm
 from django.http import JsonResponse
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
@@ -38,6 +41,16 @@ class UserProfileView(TitleMixin, UpdateView):
 
     # def get_object(self, queryset=None):
     #     return get_object_or_404(Employee, id=self.kwargs['pk'])
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            training = Trainings.objects.get(date_of_begin__gte=timezone.now())
+            delta = training.date_of_begin - timezone.now().date()
+            context['countdown'] = delta.days
+        except Trainings.DoesNotExist:
+            context['countdown'] = None
+        return context
+
     def get_success_url(self):
         return reverse_lazy('users:profile', args=(self.object.id,))
 
@@ -88,10 +101,10 @@ class DashboardView(TitleMixin, ListView):
 
 class AddNewEmployeeView(TitleMixin, CreateView):
     model = Employee
+    form_class = AddNewEmployeeForm
     template_name = 'users/addNewEmployer.html'
     success_url = reverse_lazy('users:dashboard')
     title = 'New employee'
-    fields = ('first_name', 'last_name', 'username', 'email', 'phone', 'birthday')
 
 
 class AddNewEmployeeAPIView(generics.CreateAPIView):

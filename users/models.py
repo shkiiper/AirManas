@@ -19,7 +19,14 @@ class Employee(AbstractUser):
     days_to_trainings = models.IntegerField(default=30)
     available_vacation = models.IntegerField(default=0)
     days_used = models.IntegerField(default=0)
-    status = models.BooleanField(default=False)
+    STATUS_CHOICES = (
+        ('working', 'Working'),
+        ('on vacation', 'On Vacation')
+    )
+    status = models.CharField(max_length=12, choices=STATUS_CHOICES, default='working')
     doljnost = models.ForeignKey(Doljnost, on_delete=models.PROTECT, null=True)
     documents = models.ForeignKey(Documents, on_delete=models.PROTECT, null=True)
     # trainings = models.ForeignKey(Trainings, on_delete=models.PROTECT, null=True)
+
+    def __str__(self) -> str:
+        return self.username

@@ -39,11 +39,11 @@
             <div class="available">
                 <p>Vacation days available:  </p>
                 <div class="color_blue">{{ employee.available_vacation }}</div>
-                <a href="{% url 'vacation:history' %}">Vacations history</a>
+                <a href="{% url 'vacation:history' employee.id %}">Vacations history</a>
             </div>
             <div class="available">
                 <p>Days to trainning:  </p>
-                <div class="color_darkblue"> 37 </div>
+                <div class="color_darkblue"> {{ countdown }} </div>
             </div>
 
                             <!-- For Admin profile -->

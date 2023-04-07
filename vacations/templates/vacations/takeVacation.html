@@ -31,11 +31,11 @@
             <section class="second_section">
                 {{ form.comments }}
              </section>
-                <div>
-                    <p>Send to everyone:</p>
-                    {{ form.send_to_all }}
-                </div>
-                <div>
+{#                <div>#}
+{#                    <p>Send to everyone:</p>#}
+{#                    {{ form.send_to_all }}#}
+{#                </div>#}
+                <div class="buttom_takeVacation">
                     <button class="cancel" style="color: white" ><a style="color: white" href={{request.META.HTTP_REFERER}}>Cancel</a></button>
                     <button type="submit" class="apply">Apply</button>
                 </div>

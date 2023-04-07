@@ -84,13 +84,13 @@ font-family: 'Malatestian'
 }
 .wrapper .info{
     /*margin: 30px 0 0 70px;*/
-    padding-top: 100px;
-    width: 500px;
+    padding-top: 50px;
+    width: 800px;
     height: 600px;
 }
 .text_line
 {
-    width: 400px;
+    width: 800px;
     display: flex;
     justify-content: center;
     text-align: start;
@@ -101,14 +101,15 @@ font-family: 'Malatestian'
 .wrapper .info p{
     font-size: 30px;
 line-height: 38px;
-width: 400px;
+width: 900px;
 text-align: start;
     display: flex;
 }
 .wrapper .info div{
     display: flex;
     margin-bottom: 30px;
-    width: 500px;
+    padding-left: 40px;
+    width: 900px;
 }
 .wrapper .info strong{
     font-weight: 500;
