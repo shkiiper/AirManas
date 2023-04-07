@@ -294,9 +294,14 @@
 {##}
 {#    </script>#}
 {#{% endblock %}#}
+{##}
 
+
+
+{###}
 {% extends "general/base.html" %}
 {% load static %}
+
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/vacationHistory.css' %}">
 {% endblock %}
@@ -304,16 +309,18 @@
 {% block content %}
     <h1>{{ title }}</h1>
     <div class="vacation-periods">
+     {% csrf_token %}
         {% for vacation in past_vacations %}
             <div class="vacation-period">
-                <p>Employee: {{user.username}}</p>
+                <p>Employee: {{ vacation.employee.username }}</p>
                 <p>From: {{ vacation.date_of_begin }}</p>
-                <p>To: {{ vacation.date_of_end }}</p>
-                <p>Days: {{ vacation.count_of_vacations }}</p>
+                <p>To: {{ vacation.date_of_end }}</p><br>
+{#                <p>Days: </p>#}
             </div>
         {% empty %}
             <p>No past vacations found.</p>
         {% endfor %}
     </div>
 {% endblock %}
+
 

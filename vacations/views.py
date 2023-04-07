@@ -110,6 +110,20 @@ class VacationCalendarView(TitleMixin, ListView):
         return context
 
 
+# class VacationHistoryView(TitleMixin, TemplateView):
+#     template_name = 'vacations/vacationHistory.html'
+#     title = 'History of vacations'
+#
+#     def get_queryset(self):
+#         queryset = super().get_queryset()
+#         employee_id = self.kwargs.get('employee_id')
+#         return queryset.filter(employee_id=employee_id) if employee_id else queryset
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         past_vacations = Vacations.objects.filter(date_of_end__lt=datetime.now())
+#         context['past_vacations'] = past_vacations
+#         return context
 class VacationHistoryView(TitleMixin, TemplateView):
     template_name = 'vacations/vacationHistory.html'
     title = 'History of vacations'
@@ -121,9 +135,14 @@ class VacationHistoryView(TitleMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        employee_id = self.kwargs.get('employee_id')
+        if employee_id:
+            employee = Employee.objects.get(id=employee_id)
+            context['employee'] = employee
         past_vacations = Vacations.objects.filter(date_of_end__lt=datetime.now())
         context['past_vacations'] = past_vacations
         return context
+
 
 
 class VacationInfoView(TitleMixin, TemplateView):

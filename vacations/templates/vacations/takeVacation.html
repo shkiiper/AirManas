@@ -14,8 +14,7 @@
             </div>
             <div class="note">
                 <p>Vacation days available: {{ user.available_vacation }}</p>
-                <p>Selected days: {{ vacations.count_of_vacations }}</p>
-{#                <p>Selected days: <span id="selected-days">0</span></p>#}
+                <p>Selected days: <span id="selected-days">0</span></p>
             </div>
             <form action="{% url 'vacation:take_vacation' %}" method="POST">
                 {% csrf_token %}
