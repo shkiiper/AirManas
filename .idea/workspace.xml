@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="315db47d-9336-40a6-9cda-057d78f65236" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationCalendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationCalendar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationRequests.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationRequests.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vacations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="315db47d-9336-40a6-9cda-057d78f65236" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,7 +201,7 @@
       <workItem from="1680798521301" duration="3885000" />
       <workItem from="1680802699436" duration="7579000" />
       <workItem from="1680810972898" duration="178000" />
-      <workItem from="1680836653758" duration="24038000" />
+      <workItem from="1680836653758" duration="24206000" />
     </task>
     <servers />
   </component>
