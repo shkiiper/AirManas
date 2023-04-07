@@ -73,7 +73,6 @@ class TakeVacationView(TitleMixin, CreateView):
 #         context['vacations_data'] = json.dumps(vacations_data)
 #         return context
 
-
 class VacationCalendarView(TitleMixin, ListView):
     template_name = 'vacations/vacationCalendar.html'
     model = Vacations
@@ -92,8 +91,12 @@ class VacationCalendarView(TitleMixin, ListView):
         # filter vacations that have already ended
         past_vacations = self.model.objects.filter(date_of_end__lt=today, status='past').order_by('-date_of_end')
 
-        # filter vacations that are currently ongoing or haven't started yet
-        upcoming_vacations = self.model.objects.filter(date_of_end__gte=today, status='planned').order_by('date_of_begin')
+        # filter vacations that are currently ongoing
+        now_vacations = self.model.objects.filter(date_of_begin__lte=today, date_of_end__gte=today, status='now').order_by('date_of_begin')
+
+
+        # filter vacations that haven't started yet
+        upcoming_vacations = self.model.objects.filter(date_of_end__gt=today, status='planned').order_by('date_of_begin')
 
         # format past vacations data
         past_vacations_data = [{
@@ -104,6 +107,16 @@ class VacationCalendarView(TitleMixin, ListView):
             'employee': f"{vacation.employee.first_name} {vacation.employee.last_name}",
             'status': vacation.status
         } for vacation in past_vacations]
+
+        # format now vacations data
+        now_vacations_data = [{
+            'start': vacation.date_of_begin.strftime('%Y-%m-%d'),
+            'end': vacation.date_of_end.strftime('%Y-%m-%d'),
+            'range_of_dates': [vacation.date_of_begin + timedelta(days=x) for x in
+                               range((vacation.date_of_end - vacation.date_of_begin).days + 1)],
+            'employee': f"{vacation.employee.first_name} {vacation.employee.last_name}",
+            'status': vacation.status
+        } for vacation in now_vacations]
 
         # format upcoming vacations data
         upcoming_vacations_data = [{
@@ -116,8 +129,57 @@ class VacationCalendarView(TitleMixin, ListView):
         } for vacation in upcoming_vacations]
 
         context['past_vacations_data'] = past_vacations_data
+        context['now_vacations_data'] = now_vacations_data
         context['upcoming_vacations_data'] = upcoming_vacations_data
         return context
+
+
+
+# class VacationCalendarView(TitleMixin, ListView):
+#     template_name = 'vacations/vacationCalendar.html'
+#     model = Vacations
+#     context_object_name = 'vacations'
+#     title = 'Calendar of vacations'
+#
+#     def get_queryset(self):
+#         queryset = super().get_queryset()
+#         employee_id = self.kwargs.get('employee_id')
+#         return queryset.filter(employee_id=employee_id) if employee_id else queryset
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         today = timezone.now().date()
+#
+#         # filter vacations that have already ended
+#         past_vacations = self.model.objects.filter(date_of_end__lt=today, status='past').order_by('-date_of_end')
+#
+#         # filter vacations that are currently ongoing or haven't started yet
+#         upcoming_vacations = self.model.objects.filter(date_of_end__gte=today, status='planned').order_by('date_of_begin')
+#
+#         # format past vacations data
+#         past_vacations_data = [{
+#             'start': vacation.date_of_begin.strftime('%Y-%m-%d'),
+#             'end': vacation.date_of_end.strftime('%Y-%m-%d'),
+#             'range_of_dates': [vacation.date_of_begin + timedelta(days=x) for x in
+#                                range((vacation.date_of_end - vacation.date_of_begin).days + 1)],
+#             'employee': f"{vacation.employee.first_name} {vacation.employee.last_name}",
+#             'status': vacation.status
+#         } for vacation in past_vacations]
+#
+#         # format upcoming vacations data
+#         upcoming_vacations_data = [{
+#             'start': vacation.date_of_begin.strftime('%Y-%m-%d'),
+#             'end': vacation.date_of_end.strftime('%Y-%m-%d'),
+#             'range_of_dates': [vacation.date_of_begin + timedelta(days=x) for x in
+#                                range((vacation.date_of_end - vacation.date_of_begin).days + 1)],
+#             'employee': f"{vacation.employee.first_name} {vacation.employee.last_name}",
+#             'status': vacation.status
+#         } for vacation in upcoming_vacations]
+#
+#         context['past_vacations_data'] = past_vacations_data
+#         context['upcoming_vacations_data'] = upcoming_vacations_data
+#         return context
+
 
 
 class VacationHistoryView(TitleMixin, TemplateView):

@@ -40,7 +40,7 @@
                             <div class = "text_line"><p><strong>Profession : </strong> {{ i.employee.doljnost }}</p></div>
                             <div class = "text_line"><p><strong>Requests_date : </strong> {{ i.requests_date|date:"F j, g:i a" }}</p></div>
                             <div class = "text_line"><p><strong>Period : </strong> {{ i.date_of_begin }}" "{{ i.date_of_end }}</p></div>
-                            <div class = "text_line"> <p><strong>Status : </strong> {{ i.employee.status}}<span class="green"></span></p></div>
+                            <div class = "text_line"> <p><strong>Status : </strong> {{ i.employee.status}}</p></div>
 {#                            <div> <p>Accepted: </p><strong>No</strong></div>#}
 
                             <div class = "text_line"><p> <strong>Reason : </strong> {{ i.comments }}</p></div>
@@ -67,7 +67,7 @@
                             <div><p>Profession: </p><strong>{{ i.employee.doljnost }}</strong></div>
                             <div><p>Period: </p><strong>{{ i.requests_date|date:"F j, g:i a" }}</strong></div>
 
-                            <div> <p>Status: </p><strong>Accepted</strong><span class="orange"></span></div>
+                            <div> <p>Status: </p><strong>Accepted</strong></div>
 {#                            <div> <p>Accepted: </p><strong>No</strong></div>#}
 
                             <div><p>Reason: </p><textarea name="" id="" cols="30" rows="10"></textarea></div>

@@ -268,6 +268,32 @@
           <p>No upcoming vacations found.</p>
         {% endif %}
       </div>
+
+    <div class="col-md-6">
+        <h2>Now Vacations</h2>
+        {% if now_vacations_data %}
+          {% for vacation in now_vacations_data %}
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ vacation.employee }}</h5>
+                <p class="card-text"><strong>Status:</strong> {{ vacation.status }}</p>
+                <p class="card-text"><strong>Start Date:</strong> {{ vacation.start }}</p>
+                <p class="card-text"><strong>End Date:</strong> {{ vacation.end }}</p>
+                <p class="card-text"><strong>Duration:</strong> {{ vacation.range_of_dates|length }} days</p>
+                <ul>
+                  {% for date in vacation.range_of_dates %}
+                    <li>{{ date|date:"F j, Y" }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No upcoming vacations found.</p>
+        {% endif %}
+      </div>
     </div>
+
+
   </div>
 {% endblock %}
