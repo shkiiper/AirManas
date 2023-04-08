@@ -12,8 +12,8 @@ urlpatterns = [
     path('history/<int:user_id>/', VacationHistoryView.as_view(), name='history'),
     path('info', VacationInfoView.as_view(), name='vacation_info'),
     path('requests_', VacationRequestsView.as_view(), name='vacation_requests'),
-    path('api_history/<int:employee_id>/', VacationHistoryView.as_view(), name='api_history'),
-    path('api_history/<int:employee_id>/api/', VacationHistoryViewAPI.as_view(), name='api_history'),
-    path('api_calendar/', VacationCalendarAPIView.as_view(), name='api_calendar'),
-    path('api_calendar/<int:employee_id>/', VacationCalendarAPIView.as_view(), name='api_calendar'),
+    # path('history/<int:employee_id>/', VacationHistoryView.as_view(), name='api_history'),
+    path('history/<int:employee_id>/api/', VacationHistoryViewAPI.as_view(), name='history_api'),
+    path('calendar/api/', VacationCalendarAPIView.as_view(), name='calendar_api'),
+    path('calendar/<int:employee_id>/api/', VacationCalendarAPIView.as_view(), name='calendar-api'),
 ]
