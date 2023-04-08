@@ -1,18 +1,13 @@
-from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.views import LoginView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
-from django.contrib.messages.views import SuccessMessageMixin
 from django.utils import timezone
-
 from general.models import Trainings
 from users.models import Employee
 from common.views import TitleMixin
 from users.forms import UserLoginForm, UserProfileForm, AddNewEmployeeForm
-from django.http import JsonResponse
 from django.db.models import Q
-from django.shortcuts import get_object_or_404
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework import filters
 from rest_framework import generics
@@ -22,11 +17,9 @@ from rest_framework.response import Response
 from django.http import JsonResponse, HttpResponseRedirect
 from rest_framework.status import HTTP_201_CREATED
 from django.db.models.functions import Lower
-
 from django.views.generic.base import TemplateView
 
 
-# Create your views here.
 class UserLoginView(TitleMixin, LoginView):
     template_name = 'users/login.html'
     form_class = UserLoginForm
@@ -98,8 +91,6 @@ class UserProfileView(TitleMixin, UpdateView):
 #                 data.append(item)
 #             return JsonResponse({'data': data})
 #         return super().get(request, *args, **kwargs)
-from django.db.models.functions import Lower
-
 
 class DashboardView(TitleMixin, ListView):
     model = Employee
@@ -188,9 +179,6 @@ class EmployeeListView(ListAPIView):
     serializer_class = EmployeeSerializer
     filter_backends = [filters.OrderingFilter]
     ordering_fields = ['birthday', 'status', 'doljnost']
-
-
-from django.views.generic import TemplateView
 
 
 class EmployeeRetrieveAPIView(TitleMixin, TemplateView):

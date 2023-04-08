@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractUser
 from general.models import Documents, Trainings
 
 
-# Create your models here.
 class Doljnost(models.Model):
     doljnost = models.CharField(max_length=100)
 
