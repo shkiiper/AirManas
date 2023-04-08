@@ -1,70 +1,167 @@
-{% extends 'general/base.html' %}
-{% load static %}
+{% extends 'general/base.html' %} {% load static %} {% block css %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/takeVacation.css' %}" />
+{% endblock %} {% block content %}
+<section class="first_section">
+  <div class="title_wrapper">
+    <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'Images/arrow.png' %}" alt="" /></a>
+    <p>take vacation</p>
+  </div>
+  <div class="note">
+    <p>Vacation days available: {{ user.available_vacation }}</p>
+    <p>Selected days: <span id="selected-days">0</span></p>
+  </div>
+  <form action="{% url 'vacation:take_vacation' %}" method="POST">
+    {% csrf_token %}
+    <div class="data">
+      <div class="data_from">
+        <p>From:</p>
+        {{ form.date_of_begin }}
+      </div>
+      <div class="data_to">
+        <p>To:</p>
+        {{ form.date_of_end }}
+      </div>
+    </div>
 
-{% block css %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/takeVacation.css' %}">
-{% endblock %}
+    <section class="second_section">{{ form.comments }}</section>
+    <div class="buttom_takeVacation">
+      <button class="cancel" style="color: white">
+        <a style="color: white" href="{{request.META.HTTP_REFERER}}">Cancel</a>
+      </button>
+      <button type="submit" class="apply">Apply</button>
+    </div>
+  </form>
+</section>
+<script defer>
+  async function getNowDatas() {
+    const now_vacations = await axios
+      .get('/vacation/calendar/api/')
+      .then((res) => res?.data.now_vacations_data);
 
-{% block content %}
-    <section class="first_section">
-            <div class="title_wrapper">
-                <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'Images/arrow.png' %}" alt=""></a>
-                <p>take vacation</p>
-            </div>
-            <div class="note">
-                <p>Vacation days available: {{ user.available_vacation }}</p>
-                <p>Selected days: <span id="selected-days">0</span></p>
-            </div>
-            <form action="{% url 'vacation:take_vacation' %}" method="POST">
-                {% csrf_token %}
-                    <div class="data">
-                    <div class="data_from">
-                        <p>From:</p>{{ form.date_of_begin }}
-                    </div>
-                    <div class="data_to">
-                       <p>To:</p> {{ form.date_of_end }}
-                    </div>
-                </div>
+    let allDatas = [];
 
+    now_vacations.forEach((vacation) => {
+      allDatas = [...allDatas, ...vacation.range_of_dates];
+    });
 
-            <section class="second_section">
-                {{ form.comments }}
-             </section>
-{#                <div>#}
-{#                    <p>Send to everyone:</p>#}
-{#                    {{ form.send_to_all }}#}
-{#                </div>#}
-                <div class="buttom_takeVacation">
-                    <button class="cancel" style="color: white" ><a style="color: white" href={{request.META.HTTP_REFERER}}>Cancel</a></button>
-                    <button type="submit" class="apply">Apply</button>
-                </div>
-            </form>
-        </section>
-    <script>
-     var startDatePicker = document.getElementById("start-date");
-    var endDatePicker = document.getElementById("end-date");
+    return allDatas;
+  }
 
-    // Attach change event listeners to both date pickers
-    startDatePicker.addEventListener("change", updateSelectedDays);
-    endDatePicker.addEventListener("change", updateSelectedDays);
+  var datasets = [];
 
-// Function to update the selected days count
-    function updateSelectedDays() {
-      // Get the start and end dates from the date pickers
-      var startDate = new Date(startDatePicker.value);
-      var endDate = new Date(endDatePicker.value);
+  getNowDatas().then((res) => {
+    datasets = [...datasets, ...res];
+  });
 
-      // Calculate the difference in milliseconds
-      var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+  var startDatePicker = document.getElementById('start-date');
+  var endDatePicker = document.getElementById('end-date');
 
-      // Convert to days by dividing by the number of milliseconds in a day
-      var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  const availableDays = Number('{{user.available_vacation}}'.replace('-', ''));
 
-      count_of_vacations=diffDays;
+  const currentDate = new Date();
 
-      // Display the result to the user
-      document.getElementById("selected-days").innerHTML = diffDays;
+  const nextDay = new Date();
+  nextDay.setDate(currentDate.getDate() + 1);
+
+  // islam code start
+  const today = new Date().toISOString().split('T')[0];
+
+  startDatePicker.setAttribute('min', today);
+  endDatePicker.setAttribute('min', nextDay.toISOString().split('T')[0]);
+  startDatePicker.value = today;
+  endDatePicker.value = nextDay.toISOString().split('T')[0];
+  // islam code end
+
+  // Attach change event listeners to both date pickers
+  startDatePicker.addEventListener('change', updateSelectedDaysStart);
+  endDatePicker.addEventListener('change', updateSelectedDaysEnd);
+
+  // Function to update the selected days count
+  function updateSelectedDaysStart() {
+    var startDate = new Date(startDatePicker.value);
+    var endDate = new Date(endDatePicker.value);
+    const startDateNext = startDate;
+    startDateNext.setDate(startDateNext.getDate() + 1);
+
+    if (startDate.getTime() > endDate.getTime()) {
+      endDatePicker.value = startDateNext.toISOString().split('T')[0];
     }
-    </script>
+
+    endDatePicker.setAttribute('min', startDateNext.toISOString().split('T')[0]);
+
+    // Calculate the difference in milliseconds
+    var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+
+    // Convert to days by dividing by the number of milliseconds in a day
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    count_of_vacations = diffDays;
+
+    // Display the result to the user
+    document.getElementById('selected-days').innerHTML = diffDays;
+
+    let dateArray = [];
+
+    // Copy start date
+    let currentDateFunc = new Date(startDate);
+
+    // Loop until current date is greater than end date
+    while (currentDateFunc <= endDate) {
+      dateArray.push(new Date(currentDateFunc).toISOString().split('T')[0]);
+      // Increase current date by one day
+      currentDateFunc.setDate(currentDateFunc.getDate() + 1);
+    }
+
+    dateArray.forEach((selectedDay) => {
+      if (datasets.includes(selectedDay)) {
+        alert('Вы этом промежутке вы уже брали отпуски');
+      }
+    });
+  }
+
+  function updateSelectedDaysEnd() {
+    var startDate = new Date(startDatePicker.value);
+    var endDate = new Date(endDatePicker.value);
+    const startDateNext = startDate;
+    startDateNext.setDate(startDateNext.getDate() + 1);
+
+    // islam code end
+
+    // Calculate the difference in milliseconds
+    var timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+
+    // Convert to days by dividing by the number of milliseconds in a day
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    count_of_vacations = diffDays;
+
+    if (diffDays > availableDays) {
+      alert('Вы выбрали больше дней чем положено, и у вас не получится добавить их');
+      endDatePicker.value = startDateNext.toISOString().split('T')[0];
+      return null;
+    }
+
+    // Display the result to the user
+    document.getElementById('selected-days').innerHTML = diffDays;
+
+    let dateArray = [];
+
+    // Copy start date
+    let currentDateFunc = new Date(startDate);
+
+    // Loop until current date is greater than end date
+    while (currentDateFunc <= endDate) {
+      dateArray.push(new Date(currentDateFunc).toISOString().split('T')[0]);
+      // Increase current date by one day
+      currentDateFunc.setDate(currentDateFunc.getDate() + 1);
+    }
+
+    dateArray.forEach((selectedDay) => {
+      if (datasets.includes(selectedDay)) {
+        alert('Вы этом промежутке вы уже брали отпуски, и у вас не получится добавить их');
+      }
+    });
+  }
+</script>
 {% endblock %}

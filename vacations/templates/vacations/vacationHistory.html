@@ -1,335 +1,50 @@
-{% extends 'general/base.html' %}
-{% load static %}
+{% extends 'general/base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/vacationHistory.css' %}" />
+{% endblock %} {% block content %}
+<br>
+<h2>История</h2>
+<br>
+<div id='calendar'></div>
+  
 
+<style>
+    .fc-event-time{
+        display: none;
+    }
+    .fc-day-today{
+        background-color: skyblue!important;
+    }
 
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/vacationHistory.css' %}">
-{% endblock %}
-
-{% block content %}
-    <section class="first_section">
-            <div class="title_wrapper">
-                <a href="{{request.META.HTTP_REFERER}}"><img src="{% static 'Images/arrow.png' %}" alt=""></a>
-                <p>take vacation</p>
-            </div>
-        </section>
-
-    <table id="calendarBig">
-        <thead>
-            <tr>
-                <td>
-                <td>
-                <td>
-        <tbody>
-            <tr>
-                <td>
-                    <table data-m="0">
-                        <thead>
-                            <tr>
-                                <td colspan="7">January
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-                <td>
-                    <table data-m="1">
-                        <thead>
-                            <tr>
-                                <td colspan="7">February
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-                <td>
-                    <table data-m="2">
-                        <thead>
-                            <tr>
-                                <td colspan="7">March
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-            <tr>
-                <td>
-                    <table data-m="3">
-                        <thead>
-                            <tr>
-                                <td colspan="7">April
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-                <td>
-                    <table data-m="4">
-                        <thead>
-                            <tr>
-                                <td colspan="7">May
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-                <td>
-                    <table data-m="5">
-                        <thead>
-                            <tr>
-                                <td colspan="7">June
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-            <tr>
-                <td>
-                    <table data-m="6">
-                        <thead>
-                            <tr>
-                                <td colspan="7">July
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-                <td>
-                    <table data-m="7">
-                        <thead>
-                            <tr>
-                                <td colspan="7">August
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-                <td>
-                    <table data-m="8">
-                        <thead>
-                            <tr>
-                                <td colspan="7">September
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-            <tr>
-                <td>
-                    <table data-m="9">
-                        <thead>
-                            <tr>
-                                <td colspan="7">October
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-                <td>
-                    <table data-m="10">
-                        <thead>
-                            <tr>
-                                <td colspan="7">November
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-                <td>
-                    <table data-m="11">
-                        <thead>
-                            <tr>
-                                <td colspan="7">December
-                            <tr>
-                                <td>Mo
-                                <td>Tu
-                                <td>We
-                                <td>Th
-                                <td>Fr
-                                <td>Su
-                                <td>Sa
-                        <tbody>
-                    </table>
-    </table>
-
-
-
-    <script>
-        function calendarBig(year) {
-            for (var m = 0; m <= 11; m++) {
-                var D = new Date(year, [m], 1),
-                    Dlast = new Date(D.getFullYear(), D.getMonth() + 1, 0).getDate(),
-                    DNlast = new Date(D.getFullYear(), D.getMonth(), Dlast).getDay(),
-                    DNfirst = new Date(D.getFullYear(), D.getMonth(), 1).getDay(),
-                    calendar = '<tr>';
-
-                if (DNfirst != 0) {
-                    for (var i = 1; i < DNfirst; i++) calendar += '<td>';
-                } else {
-                    for (var i = 0; i < 6; i++) calendar += '<td>';
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', async function  () {
+        const holidays = await axios.get('api/').then(res=>{
+            return res.data.map((day)=>{
+                return {
+                    start: day.date_of_begin,
+                    end: day.date_of_end,
+                    // title: day.comments,
+                    display: 'background',
+                    color: 'red',
                 }
+            })
+        })
 
-                for (var i = 1; i <= Dlast; i++) {
-                    if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
-                        calendar += '<td class="today">' + i;
-                    } else {
-                        if (
-                            (i == 1 && D.getMonth() == 0 && ((D.getFullYear() > 1897 && D.getFullYear() < 1930) || D.getFullYear() > 1947)) ||
-                            (i == 2 && D.getMonth() == 0 && D.getFullYear() > 1992) ||
-                            ((i == 3 || i == 4 || i == 5 || i == 6 || i == 8) && D.getMonth() == 0 && D.getFullYear() > 2004) ||
-                            (i == 7 && D.getMonth() == 0 && D.getFullYear() > 1990) ||
-                            (i == 23 && D.getMonth() == 1 && D.getFullYear() > 2001) ||
-                            (i == 8 && D.getMonth() == 2 && D.getFullYear() > 1965) ||
-                            (i == 1 && D.getMonth() == 4 && D.getFullYear() > 1917) ||
-                            (i == 9 && D.getMonth() == 4 && D.getFullYear() > 1964) ||
-                            (i == 12 && D.getMonth() == 5 && D.getFullYear() > 1990) ||
-                            (i == 7 && D.getMonth() == 10 && (D.getFullYear() > 1926 && D.getFullYear() < 2005)) ||
-                            (i == 8 && D.getMonth() == 10 && (D.getFullYear() > 1926 && D.getFullYear() < 1992)) ||
-                            (i == 4 && D.getMonth() == 10 && D.getFullYear() > 2004)
-                        ) {
-                            calendar += '<td class="holiday">' + i;
-                        } else {
-                            calendar += '<td>' + i;
-                        }
-                    }
-                    if (new Date(D.getFullYear(), D.getMonth(), i).getDay() == 0) {
-                        calendar += '<tr>';
-                    }
-                }
+        const calendarEl = document.getElementById('calendar')
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'multiMonthYear',
+          eventDisplay: 'block',
+          aspectRatio: 4,
+          height: 'auto',
+          events: [
+      ...holidays
+    ]
+        })
+        calendar.render()
+      })
 
-                if (DNlast != 0) {
-                    for (var i = DNlast; i < 7; i++) calendar += '<td>';
-                }
+</script>
 
-                document.querySelector('#calendarBig table[data-m="' + [m] + '"] tbody').innerHTML = calendar;
-                document.querySelector('#calendarBig > thead td:nth-child(2)').innerHTML =  year;
-                document.querySelector('#calendarBig > thead td:nth-child(1)').innerHTML = parseFloat(parseFloat(year) - 1);
-                document.querySelector('#calendarBig > thead td:nth-child(3)').innerHTML = parseFloat(parseFloat(year) + 1);
-
-                // абзац создаёт сообщения
-                for (var k = 1; k <= document.querySelectorAll('#calendarTable div').length; k++) {
-                    var myD = document.querySelectorAll('#calendarBig table td'),
-                        my = document.querySelector('#calendarTable div:nth-child(' + [k] + ')');
-                    for (var i = 0; i < myD.length; i++) {
-                        if (my.dataset.yyyy) {
-                            if (myD[i].innerHTML == my.dataset.dd && myD[i].parentNode.parentNode.parentNode.dataset.m == (my.dataset.mm - 1) && year == my.dataset.yyyy) {
-                                myD[i].title = my.dataset.text;
-                                if (my.dataset.link) {
-                                    myD[i].innerHTML = '<a href="' + my.dataset.link + '" target="_blank">' + myD[i].innerHTML + '</a>';
-                                }
-                            }
-                        } else {
-                            if (myD[i].innerHTML == my.dataset.dd && myD[i].parentNode.parentNode.parentNode.dataset.m == (my.dataset.mm - 1)) {
-                                myD[i].title = my.dataset.text;
-                                if (my.dataset.link) {
-                                    myD[i].innerHTML = '<a href="' + my.dataset.link + '" target="_blank">' + myD[i].innerHTML + '</a>';
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-
-        calendarBig(new Date().getFullYear());
-        document.querySelector('#calendarBig > thead td:nth-child(1)').onclick = calendarBigG;
-        document.querySelector('#calendarBig > thead td:nth-child(3)').onclick = calendarBigG;
-        function calendarBigG() { calendarBig(this.innerHTML.replace(/[^\d]/gi, '')); }
-
-    </script>
-{% endblock %}
-
-
-
-
-{###}
-{#{% extends "general/base.html" %}#}
-{#{% load static %}#}
-{##}
-{#{% block css %}#}
-{#    <link rel="stylesheet" href="{% static 'css/vacationHistory.css' %}">#}
-{#{% endblock %}#}
-{#{% block content %}#}
-{#  <h1>{{ title }}</h1>#}
-{#  {% if past_vacations %}#}
-{#    <ul>#}
-{#      {% for vacation in past_vacations %}#}
-{#        <li>#}
-{#          <h2>{{ vacation.employee.full_name }}</h2>#}
-{#          <p>Comments: {{ vacation.comments }}</p>#}
-{#          <p>Request date: {{ vacation.requests_date }}</p>#}
-{#          <p>Date of begin: {{ vacation.date_of_begin }}</p>#}
-{#          <p>Date of end: {{ vacation.date_of_end }}</p>#}
-{#          <p>Count of vacations: {{ vacation.count_of_vacations }}</p>#}
-{#          <p>Status: {% if vacation.accepted %}Accepted{% else %}Pending{% endif %}</p>#}
-{#          <p>Dates between:</p>#}
-{#          <ul>#}
-{#            {% for date in vacation.dates_between %}#}
-{#              <li>{{ date }}</li>#}
-{#            {% endfor %}#}
-{#          </ul>#}
-{#        </li>#}
-{#      {% endfor %}#}
-{#    </ul>#}
-{#  {% else %}#}
-{#    <p>No past vacations found.</p>#}
-{#  {% endif %}#}
-{#{% endblock %}#}
-{##}
-
+    {% endblock %}
+  </table>
+</div>
