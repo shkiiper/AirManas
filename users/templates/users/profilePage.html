@@ -40,6 +40,7 @@
                 <p>Vacation days available:  </p>
                 <div class="color_blue">{{ employee.available_vacation }}</div>
                 <a href="{% url 'vacation:history' employee.id %}">Vacations history</a>
+
             </div>
             <div class="available">
                 <p>Days to trainning:  </p>
@@ -50,7 +51,7 @@
              <div style="text-align: right; margin: 0 81px 0 0;">
                 <button style="color: white" class="buttons"><a style="color: white" href="{% url 'vacation:take_vacation' %}">Take vacation</a></button>
                  {% if user.is_superuser or user.is_staff %}
-                <button style="padding: 15px" class="buttons"><a style="color: white" href="{% url 'vacation:calendar' %}">Vacation calendar</a></button>
+                <button style="padding: 15px" class="buttons"><a style="color: white" href="{% url 'vacation:calendar' employee.id %}">Vacation calendar</a></button>
                 <button style="padding: 15px" style="color: white" class="buttons"><a style="color: white" href="{% url 'vacation:vacation_requests' %}">Vacation requests</a></button>
                  {% endif %}
             </div>

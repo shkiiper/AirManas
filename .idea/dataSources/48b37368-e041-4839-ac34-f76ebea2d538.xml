@@ -1770,17 +1770,17 @@ model</ColNames>
       <NotNull>1</NotNull>
       <Position>17</Position>
     </column>
-    <column id="590" parent="494" name="status">
-      <DasType>bool|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="590" parent="494" name="documents_id">
+      <DasType>bigint|0s</DasType>
       <Position>18</Position>
     </column>
-    <column id="591" parent="494" name="documents_id">
+    <column id="591" parent="494" name="doljnost_id">
       <DasType>bigint|0s</DasType>
       <Position>19</Position>
     </column>
-    <column id="592" parent="494" name="doljnost_id">
-      <DasType>bigint|0s</DasType>
+    <column id="592" parent="494" name="status">
+      <DasType>varchar(12)|0s</DasType>
+      <NotNull>1</NotNull>
       <Position>20</Position>
     </column>
     <foreign-key id="593" parent="494">
@@ -1931,27 +1931,27 @@ permission_id</ColNames>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="623" parent="497" name="status">
-      <DasType>bool|0s</DasType>
-      <NotNull>1</NotNull>
+    <column id="623" parent="497" name="employee_id">
+      <DasType>bigint|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="624" parent="497" name="employee_id">
-      <DasType>bigint|0s</DasType>
+    <column id="624" parent="497" name="count_of_vacations">
+      <DasType>integer|0s</DasType>
+      <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="625" parent="497" name="count_of_vacations">
-      <DasType>integer|0s</DasType>
+    <column id="625" parent="497" name="accepted">
+      <DasType>bool|0s</DasType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <column id="626" parent="497" name="accepted">
+    <column id="626" parent="497" name="send_to_all">
       <DasType>bool|0s</DasType>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
-    <column id="627" parent="497" name="send_to_all">
-      <DasType>bool|0s</DasType>
+    <column id="627" parent="497" name="status">
+      <DasType>varchar(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>10</Position>
     </column>

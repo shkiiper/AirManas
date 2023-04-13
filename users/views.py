@@ -1,4 +1,4 @@
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
@@ -8,7 +8,7 @@ from users.models import Employee
 from common.views import TitleMixin
 from users.forms import UserLoginForm, UserProfileForm, AddNewEmployeeForm
 from django.db.models import Q
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView
 from rest_framework import filters
 from rest_framework import generics
 from .serializers import EmployeeSerializer, AddNewEmployeeSerializer
@@ -48,49 +48,6 @@ class UserProfileView(TitleMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('users:profile', args=(self.object.id,))
 
-
-# class DashboardView(TitleMixin, ListView):
-#     model = Employee
-#     template_name = 'users/dashboard.html'
-#     context_object_name = 'employees'
-#     title = 'Dashboard'
-#
-#     def get_queryset(self):
-#         queryset = super().get_queryset()
-#         employee_id = self.kwargs.get('employee_id')
-#         return queryset.filter(employee_id=employee_id) if employee_id else queryset
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['employee'] = Employee.objects.all()
-#         return context
-#
-#     def get(self, request, *args, **kwargs):
-#         if request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest':
-#             query = request.GET.get('q', '')
-#             status_filter = request.GET.get('status', '')
-#             object_list = self.get_queryset()
-#             if query:
-#                 object_list = object_list.filter(
-#                     Q(id__icontains=query) |
-#                     Q(name__icontains=query) |
-#                     Q(email__icontains=query) |
-#                     Q(available_vacation__icontains=query)
-#                 )
-#             if status_filter:
-#                 object_list = object_list.filter(status=status_filter)
-#             data = []
-#             for obj in object_list:
-#                 item = {
-#                     'id': obj.id,
-#                     'name': obj.name,
-#                     'email': obj.email,
-#                     'available_vacation': obj.available_vacation,
-#                     'status': obj.status
-#                 }
-#                 data.append(item)
-#             return JsonResponse({'data': data})
-#         return super().get(request, *args, **kwargs)
 
 class DashboardView(TitleMixin, ListView):
     model = Employee

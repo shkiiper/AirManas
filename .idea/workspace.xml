@@ -5,7 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="315db47d-9336-40a6-9cda-057d78f65236" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/requirments.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirments.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/48b37368-e041-4839-ac34-f76ebea2d538.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/48b37368-e041-4839-ac34-f76ebea2d538.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AirManas/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AirManas/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/general/templates/general/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/general/templates/general/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/vacationRequests.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/vacationRequests.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/profilePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/profilePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/takeVacation.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/takeVacation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationCalendar.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationCalendar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationHistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/templates/vacations/vacationRequests.html" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/templates/vacations/vacationRequests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vacations/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/vacations/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +44,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/AirManas/settings.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -49,6 +70,11 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
 }</component>
   <component name="RecentsManager">
@@ -206,7 +232,11 @@
       <workItem from="1680836653758" duration="30259000" />
       <workItem from="1680923459109" duration="125000" />
       <workItem from="1680924988407" duration="5431000" />
-      <workItem from="1680935598536" duration="65000" />
+      <workItem from="1680935598536" duration="435000" />
+      <workItem from="1680936408008" duration="6199000" />
+      <workItem from="1681036089546" duration="5494000" />
+      <workItem from="1681129937299" duration="5656000" />
+      <workItem from="1681362151910" duration="1884000" />
     </task>
     <servers />
   </component>

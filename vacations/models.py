@@ -13,12 +13,13 @@ class Vacations(models.Model):
     STATUS_CHOICES = (
         ('planed', 'Planed'),
         ('past', 'Past'),
-        ('now', 'Now')
+        ('now', 'Now'),
+        ('pending', 'Pending'),
+        ('accepted', 'Accepted'),
+        ('denied', 'Denied')
     )
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='planed')
     employee = models.ForeignKey(Employee, on_delete=models.PROTECT, null=True)
 
-    # def __str__(self) -> str:
-    #     return f"Vacations(comments='{self.comments}', requests_date='{self.requests_date}', date_of_begin='{self.date_of_begin}', date_of_end='{self.date_of_end}', STATUS_CHOICES='{self.STATUS_CHOICES}', status='{self.status}')"
     def __str__(self) -> str:
         return self.employee.username

@@ -1,299 +1,109 @@
-{% extends 'general/base.html' %}
-{% load static %}
 
-{% block css %}
-    <link rel="stylesheet" href="{% static 'css/vacationCalendar.css' %}">
-{% endblock %}
 
-{% block content %}
-    <section class="first_section" id="calendar">
-            <div class="title_wrapper">
-                <div>
-                <a href="{{request.META.HTTP_REFERER}}"><img class="arrow_left" src="{% static 'Images/arrow.png' %}" alt=""></a>
-            </div>
-                <div class="calendar-wrapper">
-                    <button id="month_prev" type="button"></button>
-                    <button id="month_next" type="button"></button>
-                <div id="divCal"></div>
-                </div>
-            </div>
-        </section>
-<div class="footer">
-        <div class="foter_planned">
-            <p>vacation planned</p>
-            <div></div>
-        </div>
-        <div class="foter_vacation">
-            <p>on vacation now</p>
-            <div></div>
-        </div>
-    </div>
+
+{% extends 'general/base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'css/vacationHistory.css' %}" />
+{% endblock %} {% block content %}
+<br>
+<div class="page-title">
+  <h2>Календарь</h2>
+  <div class="indicators">
+  <span style="background-color:#F1BDBA;"></span><p>Прошлые</p>
+  <span style="background-color:#83B4AB;"></span><p>Сейчас</p>
+  <span style="background-color:#ffa200;"></span><p>Запланировано</p>
+  </div>
 </div>
-    <script>
-        let Cal = function(divId) {
+<br>
+<div id='calendar'></div>
 
-            let data = JSON.parse("{{vacations_data|escapejs}}");
-//Сохраняем идентификатор div
-this.divId = divId;
-
-// Дни недели с понедельника
-this.DaysOfWeek = [
-  'Mo',
-  'Tu',
-  'We',
-  'Th',
-  'Fr',
-  'Su',
-  'Sa'
-];
-
-// Месяцы начиная с января
-this.Months =['January', 'february', 'March', 'April ', 'May', 'June', 'July', 'August', 'September', 'October', 'November ', 'December'];
-
-//Устанавливаем текущий месяц, год
-var d = new Date();
-
-
-
-console.log(data)
-
-this.currMonth = d.getMonth('9');
-this.currYear = d.getFullYear('22');
-this.currDay = d.getDate('3');
-};
-
-// Переход к следующему месяцу
-Cal.prototype.nextMonth = function() {
-
-if ( this.currMonth == 11 ) {
-  this.currMonth = 0;
-  this.currYear = this.currYear + 1;
-}
-else {
-  this.currMonth = this.currMonth + 1;
-}
-this.showcurr();
-};
-
-// Переход к предыдущему месяцу
-Cal.prototype.previousMonth = function() {
-if ( this.currMonth == 0 ) {
-  this.currMonth = 11;
-  this.currYear = this.currYear - 1;
-}
-else {
-  this.currMonth = this.currMonth - 1;
-}
-this.showcurr();
-};
-
-// Показать текущий месяц
-Cal.prototype.showcurr = function() {
-this.showMonth(this.currYear, this.currMonth);
-};
-
-
-
-// Показать месяц (год, месяц)
-Cal.prototype.showMonth = function(y, m) {
-
-var d = new Date()
-// Первый день недели в выбранном месяце
-, firstDayOfMonth = new Date(y, m, 7).getDay()
-// Последний день выбранного месяца
-, lastDateOfMonth =  new Date(y, m+1, 0).getDate()
-// Последний день предыдущего месяца
-, lastDayOfLastMonth = m == 0 ? new Date(y-1, 11, 0).getDate() : new Date(y, m, 0).getDate();
-
-
-var html = '<table>';
-
-// Запись выбранного месяца и года
-html += '<div class="up_flex">';
-html += '<p>' +y+ '</p>';
-html += '<div colspan="7" class="flex_month">' + this.Months[m] + '</div> </div>';
-
-
-// заголовок дней недели
-html += '<tr class="days">';
-for(var i=0; i < this.DaysOfWeek.length;i++) {
-  html += '<td>' + this.DaysOfWeek[i] + '</td>';
-}
-html += '</tr>';
-
-// Записываем дни
-var i=1;
-do {
-
-    var dow = new Date(y, m, i).getDay();
-
-    // Начать новую строку в понедельник
-    if (dow == 1) {
-        html += '<tr>';
+<style>
+    .fc-event-time{
+        display: none;
+    }
+    .fc-day-today{
+        background-color: skyblue!important;
+    }
+    .page-title{
+      display: flex;
+      justify-content: space-between;
+      align-items:center;
+    }
+    .page-title .indicators{
+      display: flex;
+      align-items:center;
     }
 
-    // Если первый день недели не понедельник показать последние дни предидущего месяца
-    else if (i == 1) {
-        html += '<tr>';
-        var k = lastDayOfLastMonth - firstDayOfMonth + 1;
-        for (var j = 0; j < firstDayOfMonth; j++) {
-            html += '<td class="not-current">' + k + '</td>';
-            k++;
-        }
+    .page-title span{
+      margin: 0px 10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid;
     }
 
-
-    var data = {
-        y: 2023,
-        m: 3,
-        d: 6,
-        d2: 12
-    }
-
-    const arr = [15,16,17,18,19,20,21,22,23,24,25,26,27,28]
-    // Записываем текущий день в цикл
-    var chk = new Date();
-    var chkY = chk.getFullYear();
-    var chkM = chk.getMonth();
-    if (chkY == this.currYear && chkM == this.currMonth && i == this.currDay) {
-        html += '<td class="today">' + i + '</td>';
-    } else if (i in arr) {
-        html += '<td class="planned_green">' + i + '</td>';
-    } else {
-        html += '<td class="normal">' + i + '</td>';
-    }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', async function  () {
+        const calendarRanges = await axios.get('api/').then(res=>{
+            return res.data
+        })
 
 
-  // закрыть строку в воскресенье
-  if ( dow == 0 ) {
-    html += '</tr>';
-  }
-  // Если последний день месяца не воскресенье, показать первые дни следующего месяца
-  else if ( i == lastDateOfMonth ) {
-    var k=1;
-    for(dow; dow < 7; dow++) {
-      html += '<td class="not-current">' + k + '</td>';
-      k++;
-    }
-  }
 
-  i++;
-}while(i <= lastDateOfMonth);
 
-// Конец таблицы
-html += '</table>';
+        const now = calendarRanges.now_vacations_data.map((range)=>{
+          return {
+                    start: range.start,
+                    end: range.end,
+                    display: 'background',
+                    color: 'green',
+                    classNames: ['now-holidays']
+                }
+        })
 
-// Записываем HTML в div
-document.getElementById(this.divId).innerHTML = html;
-};
+        const past = calendarRanges.past_vacations_data.map((range)=>{
+          return {
+                    start: range.start,
+                    end: range.end,
+                    display: 'background',
+                    color: 'red',
+                    classNames: ['past-holidays']
+                }
+        })
 
-// При загрузке окна
-window.onload = function() {
+        const planned = calendarRanges.upcoming_vacations_data.map((range)=>{
+          return {
+                    start: range.start,
+                    end: range.end,
+                    display: 'background',
+                    color: '#ffa200',
+                    classNames: ['planned-holidays']
+                }
+        })
 
-// Начать календарь
-var c = new Cal("divCal");
-c.showcurr();
+        const all = [
+          ...now,
+          ...past,
+          ...planned
+        ]
 
-// Привязываем кнопки «Следующий» и «Предыдущий»
-getId('month_next').onclick = function() {
-  c.nextMonth();
-};
-getId('month_prev').onclick = function() {
-  c.previousMonth();
-};
-}
 
-// Получить элемент по id`
-function getId(id) {
-return document.getElementById(id);
-}
 
-    </script>
-{% endblock %}
+        const calendarEl = document.getElementById('calendar')
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          eventDisplay: 'block',
+          aspectRatio: 4,
+          height: 'auto',
+          events: [
+      ...all
+    ]
+        })
+        calendar.render()
+      })
 
-{##}
-{#{% extends "general/base.html" %}#}
-{#{% load static %}#}
-{##}
-{#{% block css %}#}
-{#    <link rel="stylesheet" href="{% static 'css/vacationCalendar.css' %}">#}
-{#{% endblock %}#}
-{#{% block content %}#}
-{#  <div class="container mt-4">#}
-{#    <h1>{{ title }}</h1>#}
-{#    <div class="row">#}
-{#      <div class="col-md-6">#}
-{#        <h2>Past Vacations</h2>#}
-{#        {% if past_vacations_data %}#}
-{#          {% for vacation in past_vacations_data %}#}
-{#            <div class="card mb-3">#}
-{#              <div class="card-body">#}
-{#                <h5 class="card-title">{{ vacation.employee }}</h5>#}
-{#                <p class="card-text"><strong>Status:</strong> {{ vacation.status }}</p>#}
-{#                <p class="card-text"><strong>Start Date:</strong> {{ vacation.start }}</p>#}
-{#                <p class="card-text"><strong>End Date:</strong> {{ vacation.end }}</p>#}
-{#                <p class="card-text"><strong>Duration:</strong> {{ vacation.range_of_dates|length }} days</p>#}
-{#                <ul>#}
-{#                  {% for date in vacation.range_of_dates %}#}
-{#                    <li>{{ date|date:"F j, Y" }}</li>#}
-{#                  {% endfor %}#}
-{#                </ul>#}
-{#              </div>#}
-{#            </div>#}
-{#          {% endfor %}#}
-{#        {% else %}#}
-{#          <p>No past vacations found.</p>#}
-{#        {% endif %}#}
-{#      </div>#}
-{#      <div class="col-md-6">#}
-{#        <h2>Upcoming Vacations</h2>#}
-{#        {% if upcoming_vacations_data %}#}
-{#          {% for vacation in upcoming_vacations_data %}#}
-{#            <div class="card mb-3">#}
-{#              <div class="card-body">#}
-{#                <h5 class="card-title">{{ vacation.employee }}</h5>#}
-{#                <p class="card-text"><strong>Status:</strong> {{ vacation.status }}</p>#}
-{#                <p class="card-text"><strong>Start Date:</strong> {{ vacation.start }}</p>#}
-{#                <p class="card-text"><strong>End Date:</strong> {{ vacation.end }}</p>#}
-{#                <p class="card-text"><strong>Duration:</strong> {{ vacation.range_of_dates|length }} days</p>#}
-{#                <ul>#}
-{#                  {% for date in vacation.range_of_dates %}#}
-{#                    <li>{{ date|date:"F j, Y" }}</li>#}
-{#                  {% endfor %}#}
-{#                </ul>#}
-{#              </div>#}
-{#            </div>#}
-{#          {% endfor %}#}
-{#        {% else %}#}
-{#          <p>No upcoming vacations found.</p>#}
-{#        {% endif %}#}
-{#      </div>#}
-{##}
-{#    <div class="col-md-6">#}
-{#        <h2>Now Vacations</h2>#}
-{#        {% if now_vacations_data %}#}
-{#          {% for vacation in now_vacations_data %}#}
-{#            <div class="card mb-3">#}
-{#              <div class="card-body">#}
-{#                <h5 class="card-title">{{ vacation.employee }}</h5>#}
-{#                <p class="card-text"><strong>Status:</strong> {{ vacation.status }}</p>#}
-{#                <p class="card-text"><strong>Start Date:</strong> {{ vacation.start }}</p>#}
-{#                <p class="card-text"><strong>End Date:</strong> {{ vacation.end }}</p>#}
-{#                <p class="card-text"><strong>Duration:</strong> {{ vacation.range_of_dates|length }} days</p>#}
-{#                <ul>#}
-{#                  {% for date in vacation.range_of_dates %}#}
-{#                    <li>{{ date|date:"F j, Y" }}</li>#}
-{#                  {% endfor %}#}
-{#                </ul>#}
-{#              </div>#}
-{#            </div>#}
-{#          {% endfor %}#}
-{#        {% else %}#}
-{#          <p>No upcoming vacations found.</p>#}
-{#        {% endif %}#}
-{#      </div>#}
-{#    </div>#}
-{##}
-{##}
-{#  </div>#}
-{#{% endblock %}#}
+</script>
+
+    {% endblock %}
+  </table>
+</div>

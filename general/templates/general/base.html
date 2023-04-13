@@ -2,115 +2,163 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }}</title>
-    {% block css %}  {% endblock %}
-</head>
+    {% block css %} {% endblock %}
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.5/axios.min.js"
+      integrity="sha512-nnNHpffPSgINrsR8ZAIgFUIMexORL5tPwsfktOTxVYSv+AUAILuFYWES8IHl+hhIhpFGlKvWFiz9ZEusrPcSBQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.5/index.min.js"
+      integrity="sha512-xCMh+IX6X2jqIgak2DBvsP6DNPne/t52lMbAUJSjr3+trFn14zlaryZlBcXbHKw8SbrpS0n3zlqSVmZPITRDSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.5/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.5/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/multimonth@6.1.5/index.global.min.js"></script>
+  </head>
 
-<body>
-
+  <body>
     <div class="container">
-        <header class="header">
-            <div class="header_container">
-                <img src="{% static 'Images/Logo.png' %}" alt="logo" width="155px" height="158px" class="header_logo__img">
-                <div class="header_menu">
-                    <a href="{% url 'index' %}" class="header_menu__link Home ">Home</a>
-                    {% if user.is_superuser or user.is_staff %}
-                    <a href="{% url 'users:dashboard' %}" class="header_menu__link Dashboard">Dashboard</a>
-                        <a href="{% url 'vacation:vacation_requests'  %}" class="header_menu__link Dashboard" style="line-height: 0">Requests  <span style="margin-left: 3px; font-size: 22px; background: url('{% static 'Images/white-cicle.jpg' %}'); border-radius: 100%; color: #2FC2FF; width: 20px; height: 20px; padding-top: 10px"> {{ not_accepted_requests | length }} </span></a>
-                    {% else %}
-                    <a href="{% url 'index' %}" class="header_menu__link Dashboard">SOMETHING</a>
-                    <a href="{% url 'vacation:take_vacation' %}" class="header_menu__link Take_vacation">Take vacation</a>
-                    {% endif %}
-                    <a href="{% url 'documents' %}" class="header_menu__link Documents">Documents</a>
-                </div>
+      <header class="header">
+        <div class="header_container">
+          <img
+            src="{% static 'Images/Logo.png' %}"
+            alt="logo"
+            width="155px"
+            height="158px"
+            class="header_logo__img"
+          />
+          <div class="header_menu">
+            <a href="{% url 'index' %}" class="header_menu__link Home">Home</a>
+            {% if user.is_superuser or user.is_staff %}
+            <a href="{% url 'users:dashboard' %}" class="header_menu__link Dashboard">Dashboard</a>
+            <a
+              href="{% url 'vacation:vacation_requests'  %}"
+              class="header_menu__link Dashboard"
+              style="line-height: 0"
+              >Requests
+              <span
+                style="
+                  margin-left: 3px;
+                  font-size: 22px;
+                  background: url('{% static 'Images/white-cicle.jpg' %}');
+                  border-radius: 100%;
+                  color: #2fc2ff;
+                  width: 20px;
+                  height: 20px;
+                  padding-top: 10px;
+                "
+              >
+                {{ not_accepted_requests | length }}
+              </span></a
+            >
+            {% else %}
+            <a href="{% url 'index' %}" class="header_menu__link Dashboard">Something</a>
+            <a href="{% url 'vacation:take_vacation' %}" class="header_menu__link Take_vacation"
+              >Take vacation</a
+            >
+            {% endif %}
+            <a href="{% url 'documents' %}" class="header_menu__link Documents">Documents</a>
+          </div>
 
-                 {% if user.is_authenticated %}
-                    <img src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'Images/profile.png' %} {% endif %}" alt="profile" width="94px" height="94px"
-                        class="header_profile__img">
-                    <div class="dropdown">
-                        <div class="dropdown_head">
-                            <a href="{% url 'users:profile' user.id %}"><img src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'Images/profile.png' %} {% endif %}" alt="profile" width="94px" height="94px" class="header_profile__img"></a>
-                            <span>
-                               <p><a style="color: white" href="{% url 'users:profile' user.id %}">{{ user.first_name }}</a></p>
+          {% if user.is_authenticated %}
+          <img
+            src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'Images/profile.png' %} {% endif %}"
+            alt="profile"
+            width="94px"
+            height="94px"
+            class="header_profile__img"
+          />
+          <div class="dropdown">
+            <div class="dropdown_head">
+              <a href="{% url 'users:profile' user.id %}"
+                ><img
+                  src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'Images/profile.png' %} {% endif %}"
+                  alt="profile"
+                  width="94px"
+                  height="94px"
+                  class="header_profile__img"
+              /></a>
+              <span>
+                <p>
+                  <a style="color: white" href="{% url 'users:profile' user.id %}"
+                    >{{ user.first_name }}</a
+                  >
+                </p>
 
-                                <p style="font-weight: 200; text-align: left;"><a style="color: white" href="{% url 'users:profile' user.id %}">#{{ user.id }}</a></p>
-                            </span>
-                        </div>
-                    {% if user.is_superuser or user.is_staff %}
-{#                        <div class="dropdown_list">#}
-{#                            <img src="{% static 'Images/calendar.png' %}" alt="">#}
-{#                            <a href="{% url 'vacation:calendar' %}">Vacations calendar</a>#}
-{#                        </div>#}
-                        <div class="dropdown_list">
-                            <img src="{% static 'Images/request.png' %}" alt="">
-                            <a href="{% url 'admin:index' %}">Admin-panel</a>
-                        </div>
-                    {% endif %}
-                    {% if user.is_authenticated %}
-    <div class="dropdown_list">
-        <img src="{% static 'Images/calendar.png' %}" alt="">
-        <a href="{% url 'vacation:calendar' %}">Vacations calendar</a>
-    </div>
-{% endif %}
-
-                        <div class="dropdown_list">
-                            <img src="{% static 'Images/question.png' %}" alt="">
-                            <a href="{% url 'instructions' %}">How to use?</a>
-                        </div>
-                        <div class="dropdown_list">
-                            <img src="{% static 'Images/logout.png' %}" alt="">
-                            <a  href="{% url 'users:logout' %}">Log out</a>
-                        </div>
-                    </div>
-                {% else %}
-                    <a class="Login" href="{% url 'users:login' %}">Log in</a>
-                {% endif %}
-
-
+                <p style="font-weight: 200; text-align: left">
+                  <a style="color: white" href="{% url 'users:profile' user.id %}"
+                    >#{{ user.id }}</a
+                  >
+                </p>
+              </span>
             </div>
-        </header>
+            {% if user.is_superuser or user.is_staff %}
+            <div class="dropdown_list">
+              <img src="{% static 'Images/request.png' %}" alt="" />
+              <a href="{% url 'admin:index' %}">Admin-panel</a>
+            </div>
+            {% endif %} {% if user.is_authenticated %}
+            <div class="dropdown_list">
+              <img src="{% static 'Images/calendar.png' %}" alt="" />
+              <a href="{% url 'vacation:calendar' user.id %}">Vacations calendar</a>
+            </div>
+            {% endif %}
 
-    {% block addition  %}  {% endblock %}
-    {% block content %}  {% endblock %}
+            <div class="dropdown_list">
+              <img src="{% static 'Images/question.png' %}" alt="" />
+              <a href="{% url 'instructions' %}">How to use?</a>
+            </div>
+            <div class="dropdown_list">
+              <img src="{% static 'Images/logout.png' %}" alt="" />
+              <a href="{% url 'users:logout' %}">Log out</a>
+            </div>
+          </div>
+          {% else %}
+          <a class="Login" href="{% url 'users:login' %}">Log in</a>
+          {% endif %}
+        </div>
+      </header>
 
-
+      {% block addition %} {% endblock %} {% block content %} {% endblock %}
     </div>
     <script>
-        let dropIcon = document.querySelector('.header_profile__img');
-        let dropDown = document.querySelector('.dropdown');
-        dropIcon.addEventListener('click', function(e){
-            dropDown.classList.toggle('active')
-        })
+      let dropIcon = document.querySelector('.header_profile__img');
+      let dropDown = document.querySelector('.dropdown');
+      dropIcon.addEventListener('click', function (e) {
+        dropDown.classList.toggle('active');
+      });
 
-        let select = document.querySelector('.select');
-        let sort = document.querySelector('.sort');
+      let select = document.querySelector('.select');
+      let sort = document.querySelector('.sort');
 
-        select.addEventListener('click', function(e){
-            sort.classList.toggle('sort_active')
-        })
+      select.addEventListener('click', function (e) {
+        sort.classList.toggle('sort_active');
+      });
     </script>
 
     <script>
-        let lines = document.querySelectorAll(".line");
+      let lines = document.querySelectorAll('.line');
 
-
-        lines.forEach(element => {
-        let cont = element.parentElement.querySelector(".container_info");
-        let closeImg = element.parentElement.querySelector(".close");
-            element.addEventListener('click', function(){
-                cont.classList.toggle('cont_active')
-            })
-            closeImg.addEventListener('click', function(){
-            cont.classList.toggle('cont_active')
-    })
+      lines.forEach((element) => {
+        let cont = element.parentElement.querySelector('.container_info');
+        let closeImg = element.parentElement.querySelector('.close');
+        element.addEventListener('click', function () {
+          cont.classList.toggle('cont_active');
         });
-
-
+        closeImg.addEventListener('click', function () {
+          cont.classList.toggle('cont_active');
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
